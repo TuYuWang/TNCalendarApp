@@ -6,6 +6,7 @@ target 'TNCalendarApp' do
   use_frameworks!
 
   # Pods for TNCalendarApp
-pod 'ReactiveCocoa'
+pod 'ReactiveSwift'
 pod 'BmobSDK'
+
 end
