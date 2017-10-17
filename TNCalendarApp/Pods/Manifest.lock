@@ -1,0 +1,24 @@
+PODS:
+  - BmobSDK (2.2.1):
+    - WechatOpenSDK (~> 1.7.7)
+  - ReactiveCocoa (5.0.4):
+    - ReactiveSwift (~> 1.1)
+  - ReactiveSwift (1.1.5):
+    - Result (~> 3.2)
+  - Result (3.2.3)
+  - WechatOpenSDK (1.7.8)
+
+DEPENDENCIES:
+  - BmobSDK
+  - ReactiveCocoa
+
+SPEC CHECKSUMS:
+  BmobSDK: 952f0ca736deae9d1b6591d72337df7d9072d4f2
+  ReactiveCocoa: b31e754d15937811ede648fc83cd68f5de70a3d4
+  ReactiveSwift: 3fea31f8fc49f112d2dc613282c5d395c4d167bb
+  Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
+  WechatOpenSDK: ad1e7be1b66416df847ac50830c798b70c9e365e
+
+PODFILE CHECKSUM: 41cfd8392cf4104ae7289738ef7dda595af3daf9
+
+COCOAPODS: 1.2.1
