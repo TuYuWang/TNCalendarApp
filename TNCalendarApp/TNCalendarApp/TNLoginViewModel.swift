@@ -6,7 +6,8 @@
 //  Copyright © 2017年 com.person. All rights reserved.
 //
 
-import UIKit
+import RxSwift
+import RxDataSources
 
 class TNLoginViewModel: NSObject {
     
@@ -26,11 +27,17 @@ class TNLoginViewModel: NSObject {
         
         //get default info
         
-        let response = loginviewController.menuTableView.rx.itemSelected
-        response.subscribe { (indexPath) in
-            print(indexPath)
-        }.dispose()
+        let disposeBag = DisposeBag()
         
+        let response = loginviewController.menuTableView.rx.itemSelected
+        response.subscribe(onNext: { (indexPath) in
+            print(indexPath.row)
+        }).disposed(by: disposeBag)
+        
+        let dataSource = RxTableViewSectionedReloadDataSource { (_, tableView: UITableView, indexPath: IndexPath, _) -> UITableViewCell in
+            
+        }
+
     }
     
     public func start() {

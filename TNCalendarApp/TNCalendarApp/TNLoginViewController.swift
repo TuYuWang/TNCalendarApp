@@ -13,7 +13,7 @@ class TNLoginViewController: UIViewController {
     public var msgLabel: TNWhiteLabel!
     public var userHeaderImageView: UIImageView!
     public var menuTableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -77,8 +77,6 @@ class TNLoginViewController: UIViewController {
         
         //tableView for sign in or new account
         menuTableView = UITableView()
-        menuTableView.dataSource = self
-        menuTableView.delegate = self
         menuTableView.backgroundColor = .clear
         menuTableView.separatorStyle = .none
         menuTableView.rowHeight = 130.toPixel()
@@ -90,6 +88,8 @@ class TNLoginViewController: UIViewController {
             make.leading.trailing.bottom.equalTo(0)
             make.height.equalTo(260.toPixel())
         }
+                
+
     }
     
     fileprivate func bind() {
@@ -97,22 +97,6 @@ class TNLoginViewController: UIViewController {
     }
 }
 
-extension TNLoginViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TNLoginTableViewCell
-        cell.contentLabel.text = ["SIGN IN", "NEW ACCOUNT"][indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("no bind")
-    }
-}
 
 
 
