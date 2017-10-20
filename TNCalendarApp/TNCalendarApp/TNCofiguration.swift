@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import RxSwift
 
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 
 let widthFor750 = SCREEN_WIDTH/750
 let heightFor1334 = SCREEN_HEIGHT/1334
-let TABBAR_HEIGHT = heightFor1334*98
+let TABBAR_HEIGHT = heightFor1334*130
 let TNPrefix = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String
 let BMOBID = "fc65c6ca2f082cac62368c0646e2db09"
-
+let disposeBag = DisposeBag()
+let defaultTabbarSelected = 1
 
 public func SFont(font: CGFloat) -> UIFont {
     return UIFont.systemFont(ofSize: font*widthFor750)

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxDataSources
 
 class TNLoginViewController: UIViewController {
 
@@ -17,7 +19,7 @@ class TNLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-                
+        
         //init UI
         setupUI()
         
@@ -25,6 +27,16 @@ class TNLoginViewController: UIViewController {
         bind()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     fileprivate func setupUI() {
 
         //backgroud image
@@ -80,22 +92,42 @@ class TNLoginViewController: UIViewController {
         menuTableView.backgroundColor = .clear
         menuTableView.separatorStyle = .none
         menuTableView.rowHeight = 130.toPixel()
-        menuTableView.register(TNLoginTableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
-        
+        menuTableView.register(TNLoginTableViewCell.self, forCellReuseIdentifier: "cell")
+        menuTableView.bounces = false
         backgroundImageView.addSubview(menuTableView)
         
         menuTableView.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalTo(0)
             make.height.equalTo(260.toPixel())
         }
-                
-
+        
     }
     
     fileprivate func bind() {
+                                                       
         let viewModel = TNLoginViewModel(viewController: self)
+        
+        viewModel.items
+            .bind(to: menuTableView.rx.items(cellIdentifier: "cell", cellType: TNLoginTableViewCell.self)){ (row, element, cell) in
+                cell.contentLabel.text = element
+        }
+        .disposed(by: disposeBag)
+        
+        let event = menuTableView.rx.itemSelected
+        event.subscribe(onNext: { (ip) in
+            if ip.row == 0 {
+                viewModel.SignIn()
+            }else
+            {
+                viewModel.NewAccount()
+            }
+        }).disposed(by: disposeBag)
+        
+        
     }
 }
+
+
 
 
 

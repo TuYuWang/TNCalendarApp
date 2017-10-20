@@ -15,44 +15,43 @@ class TNLoginViewModel: NSObject {
     var userHeadImage: UIImage?
     var userName: String?
     var password: String?
+    var items: Observable<[String]>!
+    
     var loginviewController: TNLoginViewController!
     
     
     init(viewController: TNLoginViewController) {
         
         super.init()
+        
         loginviewController = viewController
+        items = Observable.just(["SIGN IN", "NEW ACCOUNT"])
         
         //get userInfo from disk
         
         //get default info
         
-        let disposeBag = DisposeBag()
         
-        let response = loginviewController.menuTableView.rx.itemSelected
-        response.subscribe(onNext: { (indexPath) in
-            print(indexPath.row)
-        }).disposed(by: disposeBag)
-        
-        let dataSource = RxTableViewSectionedReloadDataSource { (_, tableView: UITableView, indexPath: IndexPath, _) -> UITableViewCell in
-            
-        }
-
     }
     
-    public func start() {
+    public func SignIn() {
     
         //request
         BmobUser.loginWithUsername(inBackground: Visitor().name, password: Visitor().password) { (userInfo, error) in
-            guard error != nil else {
+            guard error == nil else {
                 
                 //show tip
-                
+                print(error?.localizedDescription)
                 return
             }
-            
-            
+            print(userInfo)
+            UIApplication.shared.keyWindow?.rootViewController = MPDTabBarViewController()
         }
+    }
+    
+    public func NewAccount() {
+        let registerNavigationController = UINavigationController(rootViewController: TNRegisterViewController())
+        loginviewController.present(registerNavigationController, animated: true, completion: nil)
     }
     
 }
