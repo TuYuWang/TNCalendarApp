@@ -31,3 +31,16 @@ class MPDTabBarButton: UIButton {
         }
     }
 }
+
+class TNButton: UIButton {
+    override var isHighlighted: Bool {
+        
+        get{
+            return super.isHighlighted
+        }
+        
+        set{
+            //重写父类，作用：按住不显示灰暗色
+        }
+    }
+}

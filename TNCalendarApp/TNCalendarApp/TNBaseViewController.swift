@@ -23,7 +23,7 @@ enum NavigationItemType {
 
 class TNBaseViewController: UIViewController {
 
-    var itemType: NavigationItemType = .system
+    public var itemType: NavigationItemType = .system
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,28 +51,76 @@ class TNBaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        var imageName: String!
+        
+        let leftView = TNButton(type: .custom)
+        let leftItem = UIBarButtonItem(customView: leftView)
+        let rightView = TNButton(type: .custom)
+        let rightItem = UIBarButtonItem(customView: rightView)
+        
         
         switch itemType {
         case .system: break
         case .close:
+            imageName = "icon-Close"
+            
+            leftView.rx.tap.subscribe(onNext: { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }).disposed(by: disposeBag)
+            
+            navigationItem.leftBarButtonItem = leftItem
             break
         case .menu:
+            imageName = "Icon-Menu"
+            
+            navigationItem.leftBarButtonItem = leftItem
             break
         case .userImage:
+            imageName = "Icon-Menu"
+            
+            navigationItem.rightBarButtonItem = rightItem
             break
         case .setting:
+            imageName = "Icon-Settings"
+            
+            navigationItem.rightBarButtonItem = rightItem
             break
         case .switchOver:
+            imageName = "Icon-Settings"
+
+            navigationItem.rightBarButtonItem = rightItem
             break
         case .search:
+            imageName = "icon-Search"
+
+            navigationItem.rightBarButtonItem = rightItem
             break
         case .calendar:
+            imageName = "Icon-Calendar"
+
+            navigationItem.rightBarButtonItem = rightItem
             break
         case .list:
+            imageName = "icon-Lists"
+
+            navigationItem.rightBarButtonItem = rightItem
             break
         case .logout:
+            imageName = "icon-Logout"
+
+            navigationItem.rightBarButtonItem = rightItem
             break
         
         }
+        leftView.setImage(ImageName(imageName), for: .normal)
+        rightView.setImage(ImageName(imageName), for: .normal)
+
+        leftView.rx.tap.subscribe(onNext: { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
+        }).disposed(by: disposeBag)
+        
+        rightView.rx.tap.subscribe(onNext: { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
+        }).disposed(by: disposeBag)
     }
 }

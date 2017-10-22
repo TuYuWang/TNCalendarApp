@@ -10,27 +10,45 @@ import UIKit
 
 class TNRegisterViewController: TNBaseViewController {
 
+    var registerTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         title = "SIGN UP"
+        
+        setupUI()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    fileprivate func setupUI() {
+        
+        //tableview
+        registerTableView = UITableView()
+        view.addSubview(registerTableView)
+        
+        registerTableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(UIEdgeInsetsMake(0, 0, 130.toPixel(), 0))
+        }
+        
+        //head view
+        let headView = UIView()
+        headView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 230.toPixel())
+        registerTableView.tableHeaderView = headView
+        
+        //list
+        registerTableView.rx.items(cellIdentifier: "cell", cellType: <#T##Cell.Type#>)
+        
+        
+        //continue
+        let continueBtn = UIButton(type: .custom)
+        continueBtn.setTitle("CONTINUE", for: .normal)
+        continueBtn.titleLabel?.font = SFont(font: 25)
+        view.addSubview(continueBtn)
+        
+        continueBtn.snp.makeConstraints { (make) in
+            make.edges.equalTo(UIEdgeInsetsMake(SCREEN_HEIGHT-130.toPixel(), 0, 0, 0))
+        }
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

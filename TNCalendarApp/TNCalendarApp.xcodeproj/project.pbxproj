@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		046ED9C81F9A5577008D83D0 /* TNRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046ED9C71F9A5577008D83D0 /* TNRegisterViewModel.swift */; };
+		046ED9CA1F9A5AB0008D83D0 /* TNRegisterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046ED9C91F9A5AB0008D83D0 /* TNRegisterViewCell.swift */; };
 		ADE592FEA48B9E81E3949119 /* Pods_TNCalendarApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA838BF937403E49593730B /* Pods_TNCalendarApp.framework */; };
 		E913D4C91F95F9ED001E205E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D4C81F95F9ED001E205E /* AppDelegate.swift */; };
 		E913D4CE1F95F9ED001E205E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E913D4CC1F95F9ED001E205E /* Main.storyboard */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		046ED9C71F9A5577008D83D0 /* TNRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNRegisterViewModel.swift; sourceTree = "<group>"; };
+		046ED9C91F9A5AB0008D83D0 /* TNRegisterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNRegisterViewCell.swift; sourceTree = "<group>"; };
 		0505FAA23AA3B943B7BA86CD /* Pods-TNCalendarApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TNCalendarApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TNCalendarApp/Pods-TNCalendarApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9AA838BF937403E49593730B /* Pods_TNCalendarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TNCalendarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAB869A22B7228D791B98BD /* Pods-TNCalendarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TNCalendarApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TNCalendarApp/Pods-TNCalendarApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +75,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		046ED9B81F9A3004008D83D0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		046ED9B91F9A3004008D83D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		046ED9BA1F9A3011008D83D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		046ED9BB1F9A3011008D83D0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		046ED9C21F9A3059008D83D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				046ED9C91F9A5AB0008D83D0 /* TNRegisterViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		046ED9C31F9A305A008D83D0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				046ED9C71F9A5577008D83D0 /* TNRegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9BD5F6616386C3FAC437757C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,96 +208,38 @@
 			isa = PBXGroup;
 			children = (
 				E98716151F99CA2D00AA357B /* TNRegisterViewController.swift */,
-				E98716131F99CA1900AA357B /* View */,
-				E98716141F99CA1900AA357B /* ViewModel */,
+				046ED9C21F9A3059008D83D0 /* View */,
+				046ED9C31F9A305A008D83D0 /* ViewModel */,
 			);
 			path = TNRegister;
-			sourceTree = "<group>";
-		};
-		E98716131F99CA1900AA357B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E98716141F99CA1900AA357B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E987161D1F99D43100AA357B /* TNHome */ = {
 			isa = PBXGroup;
 			children = (
 				E9A02D141F99D6C20076AD33 /* TNHomeViewController.swift */,
-				E987161E1F99D43100AA357B /* View */,
-				E987161F1F99D43100AA357B /* ViewModel */,
+				046ED9BA1F9A3011008D83D0 /* View */,
+				046ED9BB1F9A3011008D83D0 /* ViewModel */,
 			);
 			path = TNHome;
-			sourceTree = "<group>";
-		};
-		E987161E1F99D43100AA357B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E987161F1F99D43100AA357B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E98716201F99D43100AA357B /* TNCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				E98716211F99D43100AA357B /* View */,
-				E98716221F99D43100AA357B /* ViewModel */,
 				E93E9CF41F99DD1E00AEB088 /* TNCalendarViewController.swift */,
 			);
 			path = TNCalendar;
-			sourceTree = "<group>";
-		};
-		E98716211F99D43100AA357B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E98716221F99D43100AA357B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E98716231F99D43F00AA357B /* TNOverView */ = {
 			isa = PBXGroup;
 			children = (
 				E98716261F99D52800AA357B /* TNOverViewController.swift */,
-				E98716241F99D43F00AA357B /* View */,
-				E98716251F99D43F00AA357B /* ViewModel */,
+				046ED9B91F9A3004008D83D0 /* View */,
+				046ED9B81F9A3004008D83D0 /* ViewModel */,
 			);
 			path = TNOverView;
-			sourceTree = "<group>";
-		};
-		E98716241F99D43F00AA357B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E98716251F99D43F00AA357B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E9A02D161F99D9420076AD33 /* MPDTabBar */ = {
@@ -395,10 +385,12 @@
 				E99441201F9723530005F730 /* PCH.swift in Sources */,
 				E93E9CF31F99DC5A00AEB088 /* TNBaseViewController.swift in Sources */,
 				E98716101F99C9EC00AA357B /* TNLoginTableViewCell.swift in Sources */,
+				046ED9C81F9A5577008D83D0 /* TNRegisterViewModel.swift in Sources */,
 				E987160F1F99C9EC00AA357B /* TNLoginViewController.swift in Sources */,
 				E9A02D1C1F99D9420076AD33 /* MPDTabBarView.swift in Sources */,
 				E913D4C91F95F9ED001E205E /* AppDelegate.swift in Sources */,
 				E98716271F99D52A00AA357B /* TNOverViewController.swift in Sources */,
+				046ED9CA1F9A5AB0008D83D0 /* TNRegisterViewCell.swift in Sources */,
 				E9A02D151F99D6C20076AD33 /* TNHomeViewController.swift in Sources */,
 				E93ECC8A1F9739DE005664DD /* TNWhiteLabel.swift in Sources */,
 				E93E9CF51F99DD1E00AEB088 /* TNCalendarViewController.swift in Sources */,
