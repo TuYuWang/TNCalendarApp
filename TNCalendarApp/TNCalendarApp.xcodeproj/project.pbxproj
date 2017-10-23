@@ -30,6 +30,7 @@
 		E9A02D1C1F99D9420076AD33 /* MPDTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A02D181F99D9420076AD33 /* MPDTabBarView.swift */; };
 		E9A02D1D1F99D9420076AD33 /* MPDTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A02D191F99D9420076AD33 /* MPDTabBarViewController.swift */; };
 		E9A02D1E1F99D9420076AD33 /* MPDWaterRippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A02D1A1F99D9420076AD33 /* MPDWaterRippleView.swift */; };
+		E9F4EC2F1F9DF33700D457CC /* TNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4EC2E1F9DF33700D457CC /* TNButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		E9A02D181F99D9420076AD33 /* MPDTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDTabBarView.swift; sourceTree = "<group>"; };
 		E9A02D191F99D9420076AD33 /* MPDTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDTabBarViewController.swift; sourceTree = "<group>"; };
 		E9A02D1A1F99D9420076AD33 /* MPDWaterRippleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDWaterRippleView.swift; sourceTree = "<group>"; };
+		E9F4EC2E1F9DF33700D457CC /* TNButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				E98716121F99CA1900AA357B /* TNRegister */,
 				E93ECC911F9751B8005664DD /* TNUserInfo.swift */,
 				E93E9CF21F99DC5A00AEB088 /* TNBaseViewController.swift */,
+				E9F4EC2E1F9DF33700D457CC /* TNButton.swift */,
 				E93ECC891F9739DE005664DD /* TNWhiteLabel.swift */,
 				E994411C1F971E2C0005F730 /* TNCofiguration.swift */,
 				E994411F1F9723530005F730 /* PCH.swift */,
@@ -381,6 +384,7 @@
 				E98716111F99C9EC00AA357B /* TNLoginViewModel.swift in Sources */,
 				E9A02D1D1F99D9420076AD33 /* MPDTabBarViewController.swift in Sources */,
 				E93ECC921F9751B8005664DD /* TNUserInfo.swift in Sources */,
+				E9F4EC2F1F9DF33700D457CC /* TNButton.swift in Sources */,
 				E9A02D1B1F99D9420076AD33 /* MPDTabBarButton.swift in Sources */,
 				E99441201F9723530005F730 /* PCH.swift in Sources */,
 				E93E9CF31F99DC5A00AEB088 /* TNBaseViewController.swift in Sources */,

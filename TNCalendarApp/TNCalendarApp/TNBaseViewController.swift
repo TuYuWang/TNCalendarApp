@@ -53,9 +53,9 @@ class TNBaseViewController: UIViewController {
         
         var imageName: String!
         
-        let leftView = TNButton(type: .custom)
+        let leftView = TNGrayButton(type: .custom)
         let leftItem = UIBarButtonItem(customView: leftView)
-        let rightView = TNButton(type: .custom)
+        let rightView = TNGrayButton(type: .custom)
         let rightItem = UIBarButtonItem(customView: rightView)
         
         

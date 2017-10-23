@@ -25,6 +25,7 @@ class TNRegisterViewController: TNBaseViewController {
         
         //tableview
         registerTableView = UITableView()
+        
         view.addSubview(registerTableView)
         
         registerTableView.snp.makeConstraints { (make) in

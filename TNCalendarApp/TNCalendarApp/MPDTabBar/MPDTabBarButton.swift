@@ -32,7 +32,7 @@ class MPDTabBarButton: UIButton {
     }
 }
 
-class TNButton: UIButton {
+class TNGrayButton: UIButton {
     override var isHighlighted: Bool {
         
         get{
