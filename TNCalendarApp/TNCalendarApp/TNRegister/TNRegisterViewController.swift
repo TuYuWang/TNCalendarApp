@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class TNRegisterViewController: TNBaseViewController {
 
@@ -25,7 +26,11 @@ class TNRegisterViewController: TNBaseViewController {
         
         //tableview
         registerTableView = UITableView()
-        
+        registerTableView.bounces = false
+        registerTableView.separatorStyle = .none
+        registerTableView.backgroundColor = .clear
+        registerTableView.rowHeight = 115.toPixel()
+        registerTableView.register(TNRegisterViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(registerTableView)
         
         registerTableView.snp.makeConstraints { (make) in
@@ -33,12 +38,22 @@ class TNRegisterViewController: TNBaseViewController {
         }
         
         //head view
-        let headView = UIView()
-        headView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 230.toPixel())
+        let headView = TNRegisterHeaderView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 442.toPixel()))
         registerTableView.tableHeaderView = headView
         
+        let listSource = Observable.just([["NAME": "TuYuWang"],
+                                          ["EMAIL": "18759280805@163.com"],
+                                          ["PASSWORD": "tyw12345678"],
+                                          ["GENDER": "Male"],
+                                          ["BIRTHDAY": "1993.11.03"]])
+        
         //list
-        registerTableView.rx.items(cellIdentifier: "cell", cellType: <#T##Cell.Type#>)
+        listSource.bind(to: registerTableView.rx.items(cellIdentifier: "cell", cellType: TNRegisterViewCell.self)){ (row, element, cell) in
+            cell.keyLabel.text = element.keys.first
+            cell.valueTextField.text = element.values.first
+            if row != 0 { cell.extensionSeparatorLine(equalToSuperView: false) }
+            
+        }.disposed(by: disposeBag)
         
         
         //continue

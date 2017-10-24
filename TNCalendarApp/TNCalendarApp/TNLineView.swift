@@ -1,26 +1,19 @@
-
-
 //
-//  TNWhiteLabel.swift
+//  TNLineView.swift
 //  TNCalendarApp
 //
-//  Created by 涂育旺 on 2017/10/18.
+//  Created by 涂育旺 on 2017/10/24.
 //  Copyright © 2017年 com.person. All rights reserved.
 //
 
 import UIKit
 
-class TNWhiteLabel: UILabel {
+class TNLineView: UIView {
 
     init() {
         super.init(frame: CGRect.zero)
-        textColor = Hex("#ffffff")
-    }
-    
-    init(gray: Bool) {
-        super.init(frame: CGRect.zero)
-        guard gray else { return }
-        textColor = Hex("#bac8e1")
+        alpha = 0.2
+        backgroundColor = Hex("#bac8e1")
     }
     
     required init?(coder aDecoder: NSCoder) {

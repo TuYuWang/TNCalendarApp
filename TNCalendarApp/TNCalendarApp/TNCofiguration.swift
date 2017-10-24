@@ -129,9 +129,7 @@ extension UITableViewCell {
     }
     
     public func extensionSeparatorLine(equalToSuperView: Bool) {
-        let lineView = UIView()
-        lineView.backgroundColor = .white
-        lineView.alpha = 0.2
+        let lineView = TNLineView()
         contentView.addSubview(lineView)
         
         let inset = equalToSuperView ? 0 : 59.toPixel()

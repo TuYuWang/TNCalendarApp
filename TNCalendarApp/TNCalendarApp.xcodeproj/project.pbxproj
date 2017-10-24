@@ -14,6 +14,8 @@
 		E913D4CE1F95F9ED001E205E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E913D4CC1F95F9ED001E205E /* Main.storyboard */; };
 		E913D4D01F95F9ED001E205E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E913D4CF1F95F9ED001E205E /* Assets.xcassets */; };
 		E913D4D31F95F9ED001E205E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E913D4D11F95F9ED001E205E /* LaunchScreen.storyboard */; };
+		E914B2F01F9F047C004DA36A /* TNRegisterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E914B2EF1F9F047C004DA36A /* TNRegisterHeaderView.swift */; };
+		E914B2F21F9F1343004DA36A /* TNLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E914B2F11F9F1343004DA36A /* TNLineView.swift */; };
 		E93E9CF31F99DC5A00AEB088 /* TNBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E9CF21F99DC5A00AEB088 /* TNBaseViewController.swift */; };
 		E93E9CF51F99DD1E00AEB088 /* TNCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E9CF41F99DD1E00AEB088 /* TNCalendarViewController.swift */; };
 		E93ECC8A1F9739DE005664DD /* TNWhiteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93ECC891F9739DE005664DD /* TNWhiteLabel.swift */; };
@@ -45,6 +47,8 @@
 		E913D4CF1F95F9ED001E205E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E913D4D21F95F9ED001E205E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E913D4D41F95F9ED001E205E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E914B2EF1F9F047C004DA36A /* TNRegisterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNRegisterHeaderView.swift; sourceTree = "<group>"; };
+		E914B2F11F9F1343004DA36A /* TNLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNLineView.swift; sourceTree = "<group>"; };
 		E93E9CF21F99DC5A00AEB088 /* TNBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNBaseViewController.swift; sourceTree = "<group>"; };
 		E93E9CF41F99DD1E00AEB088 /* TNCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNCalendarViewController.swift; sourceTree = "<group>"; };
 		E93ECC851F9727B5005664DD /* TNCalendarApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TNCalendarApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				046ED9C91F9A5AB0008D83D0 /* TNRegisterViewCell.swift */,
+				E914B2EF1F9F047C004DA36A /* TNRegisterHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				E98716091F99C9EB00AA357B /* TNLogin */,
 				E98716121F99CA1900AA357B /* TNRegister */,
 				E93ECC911F9751B8005664DD /* TNUserInfo.swift */,
+				E914B2F11F9F1343004DA36A /* TNLineView.swift */,
 				E93E9CF21F99DC5A00AEB088 /* TNBaseViewController.swift */,
 				E9F4EC2E1F9DF33700D457CC /* TNButton.swift */,
 				E93ECC891F9739DE005664DD /* TNWhiteLabel.swift */,
@@ -396,8 +402,10 @@
 				E98716271F99D52A00AA357B /* TNOverViewController.swift in Sources */,
 				046ED9CA1F9A5AB0008D83D0 /* TNRegisterViewCell.swift in Sources */,
 				E9A02D151F99D6C20076AD33 /* TNHomeViewController.swift in Sources */,
+				E914B2F01F9F047C004DA36A /* TNRegisterHeaderView.swift in Sources */,
 				E93ECC8A1F9739DE005664DD /* TNWhiteLabel.swift in Sources */,
 				E93E9CF51F99DD1E00AEB088 /* TNCalendarViewController.swift in Sources */,
+				E914B2F21F9F1343004DA36A /* TNLineView.swift in Sources */,
 				E98716161F99CA2D00AA357B /* TNRegisterViewController.swift in Sources */,
 				E9A02D1E1F99D9420076AD33 /* MPDWaterRippleView.swift in Sources */,
 				E994411D1F971E2C0005F730 /* TNCofiguration.swift in Sources */,
