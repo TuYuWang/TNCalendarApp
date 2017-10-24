@@ -46,7 +46,7 @@ class TNRegisterViewCell: UITableViewCell {
         valueTextField.snp.makeConstraints { (make) in
             make.leading.equalTo(283.toPixel())
             make.bottom.equalTo(keyLabel.snp.bottom)
-            make.trailing.equalTo(59.toPixel())
+            make.trailing.equalTo(-59.toPixel())
         }
         
     }

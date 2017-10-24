@@ -12,5 +12,6 @@ pod 'RxDataSources', '~> 3.0'
 pod 'BmobSDK'
 pod 'SnapKit', '~> 4.0.0'
 pod 'SwiftyJSON'
+pod 'IQKeyboardManagerSwift'
 
 end

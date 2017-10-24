@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setupNavigationBar()
         
+        IQKeyboardManager.sharedManager().enable = true
+
         Bmob.register(withAppKey: BMOBID)
         
 //        window?.rootViewController = MPDTabBarViewController()
