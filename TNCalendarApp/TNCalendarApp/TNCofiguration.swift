@@ -238,7 +238,20 @@ extension UICollectionViewCell {
     }
 }
 
-
+extension UIApplication {
+    
+    static func rootViewController() -> MPDTabBarViewController {
+        return UIApplication.shared.keyWindow?.rootViewController as! MPDTabBarViewController
+    }
+    
+    static func currentViewController() -> TNBaseViewController {
+        
+        let rootViewController = UIApplication.rootViewController()
+        let navigationController = rootViewController.viewControllers![rootViewController.selectedIndex] as! UINavigationController
+        
+        return navigationController.viewControllers.first as! TNBaseViewController
+    }
+}
 
 
 

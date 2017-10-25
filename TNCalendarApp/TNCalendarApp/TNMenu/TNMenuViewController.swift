@@ -54,11 +54,13 @@ class TNMenuViewController: TNBaseViewController {
         }
         
         menuViewModel.items.bind(to: menuCollectionView.rx.items(cellIdentifier: "cell", cellType: TNMenuCollectionViewCell.self)) { (row, element, cell) in
+            
             cell.listButton.setImage(ImageName("Icon-\(element)"), for: .normal)
             cell.listButton.setTitle(element, for: .normal)
             cell.extensionVerticalLine(right: !(row % 2).toBool())
             guard row < 6 else { return }
             cell.extensionHorizontalLine(top: false)
+            
         }.disposed(by: disposeBag)
      
         let itemSelected = menuCollectionView.rx.itemSelected

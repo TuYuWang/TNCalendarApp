@@ -31,7 +31,9 @@ class TNMenuViewModel: NSObject {
             guard indexPath.row != 0, indexPath.row != 1, indexPath.row != 3 else {
                 let tabBarController = UIApplication.shared.keyWindow?.rootViewController as! MPDTabBarViewController
                 tabBarController.selectedIndex = indexPath.row
-                    return
+                
+                
+                return
             }
             print(indexPath.row)
         }

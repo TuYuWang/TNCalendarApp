@@ -44,7 +44,6 @@ class TNLoginViewModel: NSObject {
                 print(error?.localizedDescription)
                 return
             }
-            print(userInfo)
             UIApplication.shared.keyWindow?.rootViewController = MPDTabBarViewController()
         }
     }
