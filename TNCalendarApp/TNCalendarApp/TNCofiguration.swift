@@ -110,6 +110,10 @@ extension Int {
     public func toPixel() -> CGFloat {
         return CGFloat(self)*widthFor750
     }
+    
+    public func toBool() -> Bool {
+        return self != 0
+    }
 }
 
 extension Float {
@@ -200,8 +204,39 @@ extension UIView {
     
 }
 
-
-
+extension UICollectionViewCell {
+    
+    public func extensionVerticalLine(right: Bool) {
+        let view = TNLineView()
+        contentView.addSubview(view)
+        view.snp.makeConstraints { (make) in
+            make.width.equalTo(1.toPixel())
+            make.top.bottom.equalToSuperview()
+            if right {
+                make.trailing.equalToSuperview()
+            }else
+            {
+                make.leading.equalToSuperview()
+            }
+        }
+        
+    }
+    
+    public func extensionHorizontalLine(top: Bool) {
+        let view = TNLineView()
+        contentView.addSubview(view)
+        view.snp.makeConstraints { (make) in
+            make.height.equalTo(2.toPixel())
+            make.leading.trailing.equalToSuperview()
+            if top {
+                make.top.equalToSuperview().offset(1.toPixel())
+            }else
+            {
+                make.bottom.equalToSuperview().offset(1.toPixel())
+            }
+        }
+    }
+}
 
 
 

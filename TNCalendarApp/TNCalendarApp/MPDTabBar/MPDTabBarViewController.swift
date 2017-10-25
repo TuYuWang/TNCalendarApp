@@ -33,7 +33,7 @@ class MPDTabBarViewController: UITabBarController {
     
     func createNavigationController(controllerName: String) -> UINavigationController{
     
-        let viewController = NSClassFromString("TNCalendarApp." + controllerName) as! UIViewController.Type
+        let viewController = NSClassFromString("TNCalendarApp." + controllerName) as! TNBaseViewController.Type
         
         let controller = viewController.init()
                 

@@ -22,6 +22,7 @@ class TNButton: UIButton {
     private var space: CGFloat!
     private var edge: CGFloat!
     private var maxValue: CGFloat!
+    private var imageSize: CGSize! = CGSize.zero
     
     convenience init(type buttonType: ExtensionType) {
         
@@ -67,9 +68,13 @@ class TNButton: UIButton {
         self.layoutSubviews()
     }
     
+    public func setImageSize(_ size: CGSize) {
+        imageSize = size
+    }
+    
     private func makeImageConstraint() {
         
-        let frame = CGRect(x: 0, y: 0, width: (self.imageView?.width)!, height: (self.imageView?.height)!)
+        var frame = CGRect(x: 0, y: 0, width: (self.imageView?.width)!, height: (self.imageView?.height)!)
         var center = CGPoint.zero
         
         switch extensionType as ExtensionType {
@@ -87,7 +92,7 @@ class TNButton: UIButton {
             center = CGPoint(x: (self.imageView?.width)!/2+edge, y: height/2)
             break
         }
-        
+        frame = imageSize == CGSize.zero ? frame : CGRect(origin: frame.origin, size: imageSize)
         self.imageView?.frame = frame
         self.imageView?.center = center
     }

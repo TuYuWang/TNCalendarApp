@@ -25,6 +25,11 @@ class TNBaseViewController: UIViewController {
 
     public var itemType: NavigationItemType = .system
     
+    convenience init(type: NavigationItemType) {
+        self.init()
+        itemType = type
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,6 +56,12 @@ class TNBaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setItemType(type: itemType)
+        
+    }
+    
+    func setItemType(type: NavigationItemType) {
+        
         var imageName: String!
         
         let leftView = TNGrayButton(type: .custom)
@@ -59,10 +70,10 @@ class TNBaseViewController: UIViewController {
         let rightItem = UIBarButtonItem(customView: rightView)
         
         
-        switch itemType {
+        switch type {
         case .system: return
         case .close:
-            imageName = "icon-Close"
+            imageName = "Icon-Close"
             
             leftView.rx.tap.subscribe(onNext: { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
@@ -72,6 +83,10 @@ class TNBaseViewController: UIViewController {
             break
         case .menu:
             imageName = "Icon-Menu"
+            
+            leftView.rx.tap.subscribe(onNext: { [weak self] _ in
+                self?.present(TNMenuViewController(type: .close).pushNavigationController(), animated: true, completion: nil)
+            }).disposed(by: disposeBag)
             
             navigationItem.leftBarButtonItem = leftItem
             break
@@ -87,40 +102,38 @@ class TNBaseViewController: UIViewController {
             break
         case .switchOver:
             imageName = "Icon-Settings"
-
+            
             navigationItem.rightBarButtonItem = rightItem
             break
         case .search:
-            imageName = "icon-Search"
-
+            imageName = "Icon-Search"
+            
             navigationItem.rightBarButtonItem = rightItem
             break
         case .calendar:
             imageName = "Icon-Calendar"
-
+            
             navigationItem.rightBarButtonItem = rightItem
             break
         case .list:
-            imageName = "icon-Lists"
-
+            imageName = "Icon-List"
+            
             navigationItem.rightBarButtonItem = rightItem
             break
         case .logout:
-            imageName = "icon-Logout"
-
+            imageName = "Icon-Logout"
+            
             navigationItem.rightBarButtonItem = rightItem
             break
-        
+            
         }
         leftView.setImage(ImageName(imageName), for: .normal)
         rightView.setImage(ImageName(imageName), for: .normal)
-
-        leftView.rx.tap.subscribe(onNext: { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
-        }).disposed(by: disposeBag)
         
-        rightView.rx.tap.subscribe(onNext: { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
-        }).disposed(by: disposeBag)
+    }
+
+    func pushNavigationController() -> UINavigationController {
+        return UINavigationController(rootViewController: self)
     }
 }
+

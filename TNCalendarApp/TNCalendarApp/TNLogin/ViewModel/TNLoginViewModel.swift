@@ -50,9 +50,8 @@ class TNLoginViewModel: NSObject {
     }
     
     public func NewAccount() {
-        let registerViewController = TNRegisterViewController()
-        registerViewController.itemType = .close
-        loginviewController.present(UINavigationController(rootViewController: registerViewController), animated: true, completion: nil)
+        let registerViewController = TNRegisterViewController(type: .close)
+        loginviewController.present(registerViewController.pushNavigationController(), animated: true, completion: nil)
     }
     
 }
