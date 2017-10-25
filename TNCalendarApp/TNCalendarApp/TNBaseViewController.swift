@@ -60,7 +60,7 @@ class TNBaseViewController: UIViewController {
         
         
         switch itemType {
-        case .system: break
+        case .system: return
         case .close:
             imageName = "icon-Close"
             

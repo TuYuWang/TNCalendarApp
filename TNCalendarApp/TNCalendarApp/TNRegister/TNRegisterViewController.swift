@@ -14,6 +14,7 @@ class TNRegisterViewController: TNBaseViewController {
 
     var registerTableView: UITableView!
     var registerViewModel: TNRegisterViewModel!
+    var user: BmobUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,8 @@ class TNRegisterViewController: TNBaseViewController {
         title = "SIGN UP"
         
         registerViewModel = TNRegisterViewModel(viewController: self)
-
+        user = BmobUser()
+        
         setupUI()
         
     }
@@ -42,9 +44,8 @@ class TNRegisterViewController: TNBaseViewController {
         
         continueBtn.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                self?.registerViewModel.nextStep()
+                self?.registerViewModel.signUp(newUser: (self?.user)!)
             }).disposed(by: disposeBag)
-        
         
         //tableview
         registerTableView = UITableView()
@@ -79,9 +80,28 @@ class TNRegisterViewController: TNBaseViewController {
             
             if row != 0 { cell.extensionSeparatorLine(equalToSuperView: false) }
             
+            //textField text
+            let value = cell.valueTextField.rx.text
+            value.subscribe(onNext: { [weak self] text in
+                
+                guard let key = element.keys.first else { return }
+                
+                if row == 0 {
+                    self?.user.username = text
+                }else if row == 2 {
+                    self?.user.password = text
+                }else {
+                    self?.user.setObject(text, forKey: key.lowercased())
+                }
+
+            }).disposed(by: disposeBag)
+            
+            
         }.disposed(by: disposeBag)
-        
         
 
     }
+
+
 }
+

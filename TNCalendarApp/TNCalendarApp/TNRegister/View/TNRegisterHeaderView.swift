@@ -77,6 +77,7 @@ class TNRegisterHeaderView: UIView {
         //email
         let emailButton = TNButton(type: .left)
         emailButton.titleLabel?.font = SFont(font: 28)
+        emailButton.setSpace(26)
         emailButton.setTitle("or use your email address", for: .normal)
         emailButton.setImage(ImageName("Icon-Email"), for: .normal)
         addSubview(emailButton)

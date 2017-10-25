@@ -25,6 +25,7 @@ class MPDTabBarView: UIView {
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.clear
+        selectedIndex = defaultTabbarSelected
         
         for i in 0..<images.count {
             let btn = MPDTabBarButton(type: .custom)

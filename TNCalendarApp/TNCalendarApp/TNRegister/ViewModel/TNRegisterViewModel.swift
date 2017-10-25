@@ -16,19 +16,24 @@ class TNRegisterViewModel: NSObject {
 
     init(viewController: TNRegisterViewController) {
         registerViewController = viewController
-        items = Observable.just([["NAME": "TuYuWang"],
-                                 ["EMAIL": "18759280805@163.com"],
-                                 ["PASSWORD": "tyw12345678"],
-                                 ["GENDER": "Male"],
-                                 ["BIRTHDAY": "1993.11.03"]])
+        items = Observable.just([["NAME": ""],
+                                 ["EMAIL": ""],
+                                 ["PASSWORD": ""],
+                                 ["GENDER": ""],
+                                 ["BIRTHDAY": ""]])
     }
     
-    public func nextStep() {
-        let newUser = BmobUser()
+    public func signUp(newUser: BmobUser) {
+        
         newUser.signUpInBackground { (success, error) in
-            guard success else { return }
+            guard !success else {
+                
+                UIApplication.shared.keyWindow?.rootViewController = MPDTabBarViewController()
+                return
+            }
             
             //show error tip
+            print(error!.localizedDescription)
         }
         
     }
