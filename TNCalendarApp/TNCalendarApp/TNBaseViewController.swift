@@ -87,7 +87,16 @@ class TNBaseViewController: UIViewController {
             imageName = "Icon-Menu"
             
             leftView.rx.tap.subscribe(onNext: { [weak self] _ in
-                self?.present(TNMenuViewController(type: .close).pushNavigationController(), animated: true, completion: nil)
+                
+                guard let weakSelf = self else { return }
+                
+                if (weakSelf.containMenuViewController((weakSelf.navigationController?.viewControllers)!)) {
+                    weakSelf.navigationController?.popViewController(animated: true)
+                }else
+                {
+                    weakSelf.present(TNMenuViewController(type: .close).pushNavigationController(), animated: true, completion: nil)
+                }
+                
             }).disposed(by: disposeBag)
             
             navigationItem.leftBarButtonItem = leftItem
@@ -124,6 +133,13 @@ class TNBaseViewController: UIViewController {
             break
         case .logout:
             imageName = "Icon-Logout"
+
+            rightView.rx.tap.subscribe(onNext: { [weak self] _ in
+                
+                self?.present(TNLoginViewController(), animated: true, completion: {
+                    UIApplication.shared.keyWindow?.rootViewController = TNLoginViewController()
+                })
+            }).disposed(by: disposeBag)
             
             navigationItem.rightBarButtonItem = rightItem
             break
@@ -143,6 +159,10 @@ class TNBaseViewController: UIViewController {
         contentBackgroundImageView.snp.updateConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    func containMenuViewController(_ viewControllers: [UIViewController]) -> Bool {
+        return  viewControllers.contains { $0.description.contains("TNMenuViewController") }
     }
 }
 

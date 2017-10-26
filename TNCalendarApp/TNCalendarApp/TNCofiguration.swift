@@ -244,12 +244,15 @@ extension UIApplication {
         return UIApplication.shared.keyWindow?.rootViewController as! MPDTabBarViewController
     }
     
-    static func currentViewController() -> TNBaseViewController {
+    static func currentNavigationRootViewController() -> TNBaseViewController {
         
+        return UIApplication.currentNavigationViewControllers().first!
+    }
+    
+    static func currentNavigationViewControllers() -> [TNBaseViewController] {
         let rootViewController = UIApplication.rootViewController()
         let navigationController = rootViewController.viewControllers![rootViewController.selectedIndex] as! UINavigationController
-        
-        return navigationController.viewControllers.first as! TNBaseViewController
+        return navigationController.viewControllers as! [TNBaseViewController]
     }
 }
 
