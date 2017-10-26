@@ -13,7 +13,8 @@ class TNOverViewController: TNBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        title = "overview"
+        
     }
 
     override func didReceiveMemoryWarning() {

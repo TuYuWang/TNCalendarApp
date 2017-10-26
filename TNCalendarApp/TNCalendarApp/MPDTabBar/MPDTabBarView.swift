@@ -57,13 +57,20 @@ class MPDTabBarView: UIView {
         guard self.delegate != nil else { return }
         self.delegate?.MPDTabBar(tabBar: button, index: i)
         
-        if  self.selectedBtn != button {
+        setSelectedItem(index: i)
+        
+    }
+    
+    func setSelectedItem(index: Int) {
+        let currentButton = viewWithTag(2017+index) as! MPDTabBarButton
+        
+        if  self.selectedBtn != currentButton {
             self.selectedBtn!.isSelected = false
         }
         self.selectedBtn?.setImage(ImageName(self.images[selectedIndex]), for: .normal)
-        button.setImage(ImageName("\(images[i])-hight"), for: .normal)
-        self.selectedBtn = button
-        self.selectedIndex = i
+        currentButton.setImage(ImageName("\(images[index])-hight"), for: .normal)
+        self.selectedBtn = currentButton
+        self.selectedIndex = index
         self.selectedBtn!.isSelected = true
     }
 }

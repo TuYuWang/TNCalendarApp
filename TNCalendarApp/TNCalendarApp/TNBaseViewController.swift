@@ -19,11 +19,13 @@ enum NavigationItemType {
     case calendar
     case list
     case logout
+    
 }
 
 class TNBaseViewController: UIViewController {
 
     public var itemType: NavigationItemType = .system
+    private var contentBackgroundImageView: UIImageView!
     
     convenience init(type: NavigationItemType) {
         self.init()
@@ -44,7 +46,7 @@ class TNBaseViewController: UIViewController {
         }
         
         //background content image
-        let contentBackgroundImageView = UIImageView(image: ImageName("ContentBackground"))
+        contentBackgroundImageView = UIImageView(image: ImageName("ContentBackground"))
         backgroundImageView.addSubview(contentBackgroundImageView)
         
         contentBackgroundImageView.snp.makeConstraints { (make) in
@@ -127,6 +129,7 @@ class TNBaseViewController: UIViewController {
             break
             
         }
+       
         leftView.setImage(ImageName(imageName), for: .normal)
         rightView.setImage(ImageName(imageName), for: .normal)
         
@@ -134,6 +137,12 @@ class TNBaseViewController: UIViewController {
 
     func pushNavigationController() -> UINavigationController {
         return UINavigationController(rootViewController: self)
+    }
+    
+    func setContentViewBottomToSuper() {
+        contentBackgroundImageView.snp.updateConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
 }
 

@@ -9,6 +9,19 @@
 import UIKit
 import RxSwift
 
+enum MenuSelectedItem: Int{
+    
+    case home
+    case calendar
+    case groups
+    case overview
+    case list
+    case profile
+    case timeline
+    case settings
+
+}
+
 class TNMenuViewModel: NSObject {
     var items: Observable<[String]>!
     var menuViewController: TNMenuViewController!
@@ -27,19 +40,49 @@ class TNMenuViewModel: NSObject {
     
     func selectedItem(indexPath: IndexPath) {
         
-        menuViewController.dismiss(animated: true) {
-            guard indexPath.row != 0, indexPath.row != 1, indexPath.row != 3 else {
-                let tabBarController = UIApplication.shared.keyWindow?.rootViewController as! MPDTabBarViewController
-                tabBarController.selectedIndex = indexPath.row
-                
-                
+            switch MenuSelectedItem(rawValue: indexPath.row){
+
+            case .some(.home):
+                dismiss(index: defaultTabbarSelected)
+                break
+            case .some(.calendar):
+                dismiss(index: 0)
+                break
+            case .some(.groups):
+                break
+            case .some(.overview):
+                dismiss(index: 2)
+                break
+            case .some(.list):
+                break
+            case .some(.profile):
+                break
+            case .some(.timeline):
+                break
+            case .some(.settings):
+                push(viewController: TNSettingsViewController())
+                break
+            case .none:
                 return
             }
-            print(indexPath.row)
         }
-    }
     
     func logout() {
         
     }
+    
+    fileprivate func dismiss(index: Int) {
+        UIApplication.rootViewController().selectedIndex = index
+        menuViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func push(viewController: TNBaseViewController)
+    {
+        viewController.setItemType(type: .menu)
+        viewController.setItemType(type: .logout)
+        menuViewController.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
+    
+
+

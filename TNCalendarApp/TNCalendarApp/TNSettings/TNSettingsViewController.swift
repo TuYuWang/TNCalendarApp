@@ -1,19 +1,21 @@
 //
-//  TNCalendarViewController.swift
+//  TNSettingsViewController.swift
 //  TNCalendarApp
 //
-//  Created by 涂育旺 on 2017/10/20.
+//  Created by 涂育旺 on 2017/10/26.
 //  Copyright © 2017年 com.person. All rights reserved.
 //
 
 import UIKit
 
-class TNCalendarViewController: TNBaseViewController {
+class TNSettingsViewController: TNBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "calendar"
+        
+        title = "SETTINGS"
+        
+        setContentViewBottomToSuper()
     }
 
     override func didReceiveMemoryWarning() {

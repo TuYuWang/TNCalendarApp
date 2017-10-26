@@ -29,6 +29,7 @@ class MPDTabBarViewController: UITabBarController {
 
         viewControllers = [homeNavigationController, loanNavigationController, mineNavigationController]
         selectedIndex = defaultTabbarSelected
+
     }
     
     func createNavigationController(controllerName: String) -> UINavigationController{
@@ -40,6 +41,14 @@ class MPDTabBarViewController: UITabBarController {
         return UINavigationController(rootViewController: controller)
     
     }
+
+    override var selectedIndex: Int {
+
+        didSet {
+            tabBarView.setSelectedItem(index: selectedIndex)
+        }
+    }
+
 }
 
 extension MPDTabBarViewController: MPDTabBarViewViewDelegate {
