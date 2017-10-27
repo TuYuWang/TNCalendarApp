@@ -11,10 +11,10 @@ import RxSwift
 
 class TNRegisterViewModel: NSObject {
 
-    var registerViewController: TNRegisterViewController!
+    var registerViewController: TNBaseViewController!
     var items: Observable<[[String: String]]>!
 
-    init(viewController: TNRegisterViewController) {
+    init(viewController: TNBaseViewController) {
         registerViewController = viewController
         items = Observable.just([["NAME": ""],
                                  ["EMAIL": ""],
@@ -28,6 +28,11 @@ class TNRegisterViewModel: NSObject {
         newUser.signUpInBackground { (success, error) in
             guard !success else {
                 
+                guard UIApplication.shared.keyWindow?.rootViewController == TNLoginViewController.shared else {
+                    self.registerViewController.dismiss(animated: false, completion: nil)
+                    TNLoginViewController.shared.dismiss(animated: false, completion: nil)
+                    return
+                }
                 UIApplication.shared.keyWindow?.rootViewController = MPDTabBarViewController()
                 return
             }

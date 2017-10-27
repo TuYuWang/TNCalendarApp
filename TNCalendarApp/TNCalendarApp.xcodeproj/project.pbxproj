@@ -30,6 +30,8 @@
 		E98716271F99D52A00AA357B /* TNOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98716261F99D52800AA357B /* TNOverViewController.swift */; };
 		E994411D1F971E2C0005F730 /* TNCofiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E994411C1F971E2C0005F730 /* TNCofiguration.swift */; };
 		E99441201F9723530005F730 /* PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = E994411F1F9723530005F730 /* PCH.swift */; };
+		E99C09941FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C09931FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift */; };
+		E99C09961FA31E1300DAE0A9 /* TNSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C09951FA31E1300DAE0A9 /* TNSettingsViewModel.swift */; };
 		E99F98BE1FA18D8500D3F88F /* TNSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F98BD1FA18D8500D3F88F /* TNSettingsViewController.swift */; };
 		E9A02D151F99D6C20076AD33 /* TNHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A02D141F99D6C20076AD33 /* TNHomeViewController.swift */; };
 		E9A02D1B1F99D9420076AD33 /* MPDTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A02D171F99D9420076AD33 /* MPDTabBarButton.swift */; };
@@ -68,6 +70,8 @@
 		E98716261F99D52800AA357B /* TNOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNOverViewController.swift; sourceTree = "<group>"; };
 		E994411C1F971E2C0005F730 /* TNCofiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNCofiguration.swift; sourceTree = "<group>"; };
 		E994411F1F9723530005F730 /* PCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCH.swift; sourceTree = "<group>"; };
+		E99C09931FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		E99C09951FA31E1300DAE0A9 /* TNSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsViewModel.swift; sourceTree = "<group>"; };
 		E99F98BD1FA18D8500D3F88F /* TNSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsViewController.swift; sourceTree = "<group>"; };
 		E9A02D141F99D6C20076AD33 /* TNHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNHomeViewController.swift; sourceTree = "<group>"; };
 		E9A02D171F99D9420076AD33 /* MPDTabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDTabBarButton.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 		E99F98BB1FA18D6C00D3F88F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E99C09931FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 		E99F98BC1FA18D6C00D3F88F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E99C09951FA31E1300DAE0A9 /* TNSettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -450,12 +456,14 @@
 				E98716111F99C9EC00AA357B /* TNLoginViewModel.swift in Sources */,
 				E9A02D1D1F99D9420076AD33 /* MPDTabBarViewController.swift in Sources */,
 				E93ECC921F9751B8005664DD /* TNUserInfo.swift in Sources */,
+				E99C09961FA31E1300DAE0A9 /* TNSettingsViewModel.swift in Sources */,
 				E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */,
 				E9F4EC2F1F9DF33700D457CC /* TNButton.swift in Sources */,
 				E9A02D1B1F99D9420076AD33 /* MPDTabBarButton.swift in Sources */,
 				E99441201F9723530005F730 /* PCH.swift in Sources */,
 				E93E9CF31F99DC5A00AEB088 /* TNBaseViewController.swift in Sources */,
 				E98716101F99C9EC00AA357B /* TNLoginTableViewCell.swift in Sources */,
+				E99C09941FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift in Sources */,
 				E928CB6D1FA096EB002F4406 /* TNMenuViewModel.swift in Sources */,
 				046ED9C81F9A5577008D83D0 /* TNRegisterViewModel.swift in Sources */,
 				E987160F1F99C9EC00AA357B /* TNLoginViewController.swift in Sources */,

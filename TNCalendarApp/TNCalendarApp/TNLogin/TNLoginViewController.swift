@@ -10,12 +10,18 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-class TNLoginViewController: UIViewController {
+private let shareLoginViewController = TNLoginViewController()
 
+class TNLoginViewController: UIViewController {
+    
     public var msgLabel: TNWhiteLabel!
     public var userHeaderImageView: UIImageView!
     public var menuTableView: UITableView!
-
+    
+    class var shared: TNLoginViewController {
+        return shareLoginViewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,8 +31,9 @@ class TNLoginViewController: UIViewController {
         
         //bind data to UI
         bind()
+        
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true

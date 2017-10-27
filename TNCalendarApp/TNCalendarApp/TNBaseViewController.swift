@@ -135,10 +135,9 @@ class TNBaseViewController: UIViewController {
             imageName = "Icon-Logout"
 
             rightView.rx.tap.subscribe(onNext: { [weak self] _ in
-                
-                self?.present(TNLoginViewController(), animated: true, completion: {
-                    UIApplication.shared.keyWindow?.rootViewController = TNLoginViewController()
-                })
+            
+                self?.present(TNLoginViewController.shared, animated: true, completion: nil)
+
             }).disposed(by: disposeBag)
             
             navigationItem.rightBarButtonItem = rightItem

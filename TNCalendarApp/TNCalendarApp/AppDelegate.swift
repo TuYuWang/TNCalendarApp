@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Bmob.register(withAppKey: BMOBID)
         
 //        window?.rootViewController = MPDTabBarViewController()
-        window?.rootViewController = TNLoginViewController()
+        window?.rootViewController = TNLoginViewController.shared
         
         return true
     }
