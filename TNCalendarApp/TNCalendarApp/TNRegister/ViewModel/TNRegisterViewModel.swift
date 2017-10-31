@@ -20,7 +20,8 @@ class TNRegisterViewModel: NSObject {
                                  ["EMAIL": ""],
                                  ["PASSWORD": ""],
                                  ["GENDER": ""],
-                                 ["BIRTHDAY": ""]])
+                                 ["BIRTHDAY": ""],
+                                 ])
     }
     
     public func signUp(newUser: BmobUser) {

@@ -13,5 +13,6 @@ pod 'BmobSDK'
 pod 'SnapKit', '~> 4.0.0'
 pod 'SwiftyJSON'
 pod 'IQKeyboardManagerSwift'
+pod 'ImagePicker'
 
 end

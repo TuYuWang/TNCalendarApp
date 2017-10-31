@@ -7,7 +7,13 @@
 //
 
 import UIKit
+import RxSwift
 
 class TNSettingsViewModel: TNRegisterViewModel {
 
+    var sections: Observable<[String]>
+    override init(viewController: TNBaseViewController) {
+        self.sections = Observable.just(["GENERAL"])
+        super.init(viewController: viewController)
+    }
 }

@@ -34,6 +34,22 @@ class TNSettingsViewController: TNBaseViewController {
         headBackgroundImageView.contentMode = .scaleAspectFill
         headBackgroundImageView.layer.masksToBounds = true
         
+        //caramer
+        let caramerButton = UIButton(type: .custom)
+        caramerButton.setImage(ImageName("AddPhotoButton"), for: .normal)
+        headBackgroundImageView.addSubview(caramerButton)
+        
+        caramerButton.snp.makeConstraints { (make) in
+            make.leading.equalTo(40.toPixel())
+            make.bottom.equalTo(-40.toPixel())
+        }
+        caramerButton.rx.tap.subscribe(onNext: { _ in
+            let imagePickerController = ImagePickerController()
+            imagePickerController.delegate = self
+            present(imagePickerController, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
+        
+        
         //settings tableView
         settingsTableView = UITableView()
         settingsTableView.backgroundColor = .clear
@@ -53,20 +69,25 @@ class TNSettingsViewController: TNBaseViewController {
         settingsViewModel.items.bind(to: settingsTableView.rx.items(cellIdentifier: "cell", cellType: TNSettingsTableViewCell.self)){ (row, element, cell) in
             cell.keyLabel.text = element.keys.first
             cell.valueTextField.text = element.values.first
-            
+            if row != 0 { cell.extensionSeparatorLine(equalToSuperView: false) }
+
             }.disposed(by: disposeBag)
         
-        settingsTableView.rx.contentOffset.subscribe(onNext: { (point) in
-            var headViewFrame = headBackgroundImageView.frame
-            let offsetY = 314.toPixel() + Int(point.y).toPixel()
-//            headViewFrame.size.height = offsetY
-//            if -offsetY < 500.toPixel() {
+//        settingsTableView.rx.contentOffset.subscribe(onNext: { (point) in
+//            var headViewFrame = headBackgroundImageView.frame
+//            let offsetY = 314.toPixel() + Int(point.y).toPixel()
+//            headViewFrame.size.height = 500.toPixel() - offsetY * 0.4
+//
+//            if  headViewFrame.size.height < 500.toPixel() {
 //                headViewFrame.size.height = 500.toPixel()
 //            }
-            headViewFrame.size.height = 500.toPixel() - offsetY
-            headBackgroundImageView.frame = headViewFrame
-
-        }).disposed(by: disposeBag)
+//
+//            headBackgroundImageView.frame = headViewFrame
+//
+//        }).disposed(by: disposeBag)
+        
+//        settingsViewModel.sections.bind(to: settingsTableView.rx)
     }
 
 }
+

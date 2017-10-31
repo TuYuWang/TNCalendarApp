@@ -202,6 +202,14 @@ extension UIView {
         return self.frame.height
     }
     
+    func setCornerRadius(position: UIRectCorner) {
+        assert(bounds != CGRect.zero)
+        let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: position, cornerRadii: bounds.size)
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = maskPath.cgPath
+        layer.mask = maskLayer
+    }
 }
 
 extension UICollectionViewCell {

@@ -2,6 +2,7 @@ PODS:
   - BmobSDK (2.2.1):
     - WechatOpenSDK (~> 1.7.7)
   - Differentiator (3.0.0)
+  - ImagePicker (2.0.0)
   - IQKeyboardManagerSwift (5.0.4)
   - RxCocoa (4.0.0):
     - RxSwift (~> 4.0)
@@ -16,6 +17,7 @@ PODS:
 
 DEPENDENCIES:
   - BmobSDK
+  - ImagePicker
   - IQKeyboardManagerSwift
   - RxCocoa (~> 4.0)
   - RxDataSources (~> 3.0)
@@ -26,6 +28,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   BmobSDK: 952f0ca736deae9d1b6591d72337df7d9072d4f2
   Differentiator: 772c2e4e2093584a0501a72019a7cd19e1a72cc8
+  ImagePicker: 81175d36c2852cb543cb4f5d6c19e28f3e8d90eb
   IQKeyboardManagerSwift: a0592bb636b10a9a1cf75d2b2c61144226226c84
   RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
   RxDataSources: 5a5ad827b6ad91730bb4b3ed87739f28a7be3d84
@@ -34,6 +37,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WechatOpenSDK: ad1e7be1b66416df847ac50830c798b70c9e365e
 
-PODFILE CHECKSUM: 93d9218c3b23f3f8f723c528efa8f6b7f6608ea0
+PODFILE CHECKSUM: 57404461140cd9e0df18b878982697558ac81004
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0.beta.2
