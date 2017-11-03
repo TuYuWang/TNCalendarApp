@@ -26,8 +26,14 @@ class TNSettingsViewController: TNBaseViewController {
         setContentViewBottomToSuper()
         
         setupUI()
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingsViewModel.update()
+    }
+    
     fileprivate func setupUI() {
         
         settingsViewModel = TNSettingsViewModel(viewController: self)
@@ -108,7 +114,6 @@ class TNSettingsViewController: TNBaseViewController {
             .setDelegate(self)
             .disposed(by: disposeBag)
         
-
     }
     
     

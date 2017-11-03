@@ -29,22 +29,28 @@ extension SettingsModel: SectionModelType {
     }
 }
 
-class TNSettingsViewModel: NSObject {
+class TNSettingsViewModel {
 
     var model: Observable<[SettingsModel]>
-
+    
     init(viewController: TNBaseViewController) {
         
         let userInfo = BmobUser.current()!
-        
+
         self.model = Observable.just([SettingsModel(header: "GENERAL", items:
             [SettingsCellModel(title: "GENERAL", content: ""),
              SettingsCellModel(title: "NAME", content: userInfo.username),
              SettingsCellModel(title: "EMAIL", content: userInfo.email),
-             SettingsCellModel(title: "PASSWORD", content: userInfo.password ?? ""),
+             SettingsCellModel(title: "PASSWORD", content: userInfo.object(forKey: "psd") as! String),
              SettingsCellModel(title: "GENDER", content: userInfo.object(forKey: "gender") as! String),
              SettingsCellModel(title: "BIRTHDAY", content: userInfo.object(forKey: "birthday") as! String)
             ])])
+    
+    }
+    
+    func update() {
+        
+        let userObservable = Observable.just(BmobUser.current())
         
     }
 }

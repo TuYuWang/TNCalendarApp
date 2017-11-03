@@ -28,20 +28,14 @@ class TNRegisterViewModel: NSObject {
         
         newUser.signUpInBackground { (success, error) in
             guard !success else {
-                
-                newUser.setObject(newUser.password, forKey: "password")
-                BmobUser.loginWithUsername(inBackground: newUser.username, password: newUser.password)
-                
-                var root = UIApplication.shared.keyWindow?.rootViewController
-
-                guard root == TNLoginViewController.shared else {
-                        
-                    self.registerViewController.dismiss(animated: false, completion: nil)
-                    TNLoginViewController.shared.dismiss(animated: false, completion: nil)
-                    return
-                }
-                root = MPDTabBarViewController()
+                                
+                //show sing up sucess
                 print(BmobUser.current())
+
+                //dismiss self
+                
+                self.registerViewController.dismiss(animated: false, completion: nil)
+
                 return
             }
             

@@ -90,6 +90,7 @@ class TNRegisterViewController: TNBaseViewController {
                     self?.user.username = text
                 }else if row == 2 {
                     self?.user.password = text
+                    self?.user.setObject(text, forKey: "psd")
                 }else {
                     self?.user.setObject(text, forKey: key.lowercased())
                 }
@@ -99,7 +100,6 @@ class TNRegisterViewController: TNBaseViewController {
             
         }.disposed(by: disposeBag)
         
-
     }
 
 

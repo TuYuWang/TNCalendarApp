@@ -41,7 +41,7 @@ class TNLoginViewModel: NSObject {
         
         if let user = BmobUser.current() {
             name = user.username
-            password = user.object(forKey: "password") as! String
+            password = user.object(forKey: "psd") as! String
         }
         
         //request
