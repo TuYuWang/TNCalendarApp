@@ -23,7 +23,7 @@ class TNRegisterViewController: TNBaseViewController {
         
         registerViewModel = TNRegisterViewModel(viewController: self)
         user = BmobUser()
-        
+
         setupUI()
         
     }

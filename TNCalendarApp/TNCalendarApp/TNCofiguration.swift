@@ -133,16 +133,21 @@ extension UITableViewCell {
     }
     
     public func extensionSeparatorLine(equalToSuperView: Bool) {
-        let lineView = TNLineView()
-        contentView.addSubview(lineView)
-        
-        let inset = equalToSuperView ? 0 : 59.toPixel()
-        
-        lineView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.leading.equalTo(inset)
-            make.trailing.equalTo(-inset)
-            make.height.equalTo(2.toPixel())
+        guard let _ = contentView.viewWithTag(20171102) else {
+            
+            let lineView = TNLineView()
+            lineView.tag = 20171102
+            contentView.addSubview(lineView)
+            
+            let inset = equalToSuperView ? 0 : 59.toPixel()
+            
+            lineView.snp.makeConstraints { (make) in
+                make.top.equalToSuperview()
+                make.leading.equalTo(inset)
+                make.trailing.equalTo(-inset)
+                make.height.equalTo(2.toPixel())
+            }
+            return
         }
     }
 }

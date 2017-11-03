@@ -23,6 +23,11 @@ class TNWhiteLabel: UILabel {
         textColor = Hex("#bac8e1")
     }
     
+    init(color: UIColor) {
+        super.init(frame: CGRect.zero)
+        textColor = color
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

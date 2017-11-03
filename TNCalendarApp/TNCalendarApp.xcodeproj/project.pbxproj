@@ -22,6 +22,7 @@
 		E93E9CF51F99DD1E00AEB088 /* TNCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E9CF41F99DD1E00AEB088 /* TNCalendarViewController.swift */; };
 		E93ECC8A1F9739DE005664DD /* TNWhiteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93ECC891F9739DE005664DD /* TNWhiteLabel.swift */; };
 		E93ECC921F9751B8005664DD /* TNUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93ECC911F9751B8005664DD /* TNUserInfo.swift */; };
+		E9740D561FAAC0DA00230762 /* TNSettingsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9740D551FAAC0DA00230762 /* TNSettingsTableViewHeader.swift */; };
 		E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97572821FA06E6900E8640E /* TNMenuViewController.swift */; };
 		E987160F1F99C9EC00AA357B /* TNLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987160A1F99C9EC00AA357B /* TNLoginViewController.swift */; };
 		E98716101F99C9EC00AA357B /* TNLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987160C1F99C9EC00AA357B /* TNLoginTableViewCell.swift */; };
@@ -40,6 +41,19 @@
 		E9A02D1E1F99D9420076AD33 /* MPDWaterRippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A02D1A1F99D9420076AD33 /* MPDWaterRippleView.swift */; };
 		E9F4EC2F1F9DF33700D457CC /* TNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4EC2E1F9DF33700D457CC /* TNButton.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E966EC321FA95DD80090235F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		046ED9C71F9A5577008D83D0 /* TNRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNRegisterViewModel.swift; sourceTree = "<group>"; };
@@ -62,6 +76,7 @@
 		E93ECC851F9727B5005664DD /* TNCalendarApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TNCalendarApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		E93ECC891F9739DE005664DD /* TNWhiteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNWhiteLabel.swift; sourceTree = "<group>"; };
 		E93ECC911F9751B8005664DD /* TNUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNUserInfo.swift; sourceTree = "<group>"; };
+		E9740D551FAAC0DA00230762 /* TNSettingsTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsTableViewHeader.swift; sourceTree = "<group>"; };
 		E97572821FA06E6900E8640E /* TNMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNMenuViewController.swift; sourceTree = "<group>"; };
 		E987160A1F99C9EC00AA357B /* TNLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNLoginViewController.swift; sourceTree = "<group>"; };
 		E987160C1F99C9EC00AA357B /* TNLoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNLoginTableViewCell.swift; sourceTree = "<group>"; };
@@ -305,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				E99C09931FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift */,
+				E9740D551FAAC0DA00230762 /* TNSettingsTableViewHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +357,7 @@
 				E913D4C31F95F9ED001E205E /* Resources */,
 				1A47437AD9BBFC53A13DA8B5 /* [CP] Embed Pods Frameworks */,
 				0CCF6378587458444020019C /* [CP] Copy Pods Resources */,
+				E966EC321FA95DD80090235F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -423,9 +440,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TNCalendarApp/Pods-TNCalendarApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
+				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -434,9 +455,13 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -477,6 +502,7 @@
 				E9A02D1D1F99D9420076AD33 /* MPDTabBarViewController.swift in Sources */,
 				E93ECC921F9751B8005664DD /* TNUserInfo.swift in Sources */,
 				E99C09961FA31E1300DAE0A9 /* TNSettingsViewModel.swift in Sources */,
+				E9740D561FAAC0DA00230762 /* TNSettingsTableViewHeader.swift in Sources */,
 				E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */,
 				E9F4EC2F1F9DF33700D457CC /* TNButton.swift in Sources */,
 				E9A02D1B1F99D9420076AD33 /* MPDTabBarButton.swift in Sources */,
@@ -640,11 +666,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 42GANMYGG4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PCH.swift";
 				INFOPLIST_FILE = TNCalendarApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tyw.TNCalendarApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calendar.tyw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TNCalendarApp/TNCalendarApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -660,11 +691,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 42GANMYGG4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PCH.swift";
 				INFOPLIST_FILE = TNCalendarApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tyw.TNCalendarApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calendar.tyw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TNCalendarApp/TNCalendarApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

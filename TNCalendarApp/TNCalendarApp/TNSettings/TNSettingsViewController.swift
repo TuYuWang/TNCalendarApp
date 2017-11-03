@@ -8,11 +8,15 @@
 
 import UIKit
 import RxSwift
-
+import ImagePicker
+import Lightbox
+import RxDataSources
 
 class TNSettingsViewController: TNBaseViewController {
 
     var settingsTableView: UITableView!
+    private var settingsViewModel: TNSettingsViewModel!
+    private var headBackgroundImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +30,15 @@ class TNSettingsViewController: TNBaseViewController {
 
     fileprivate func setupUI() {
         
-        let settingsViewModel = TNSettingsViewModel(viewController: self)
+        settingsViewModel = TNSettingsViewModel(viewController: self)
         
         //head image background
-        let headBackgroundImageView = UIImageView(image: ImageName("AvatarMask"))
+        headBackgroundImageView = UIImageView(image: ImageName("AvatarMask"))
         headBackgroundImageView.frame = CGRect(x: 0, y: -500.toPixel(), width: SCREEN_WIDTH, height: 500.toPixel())
         headBackgroundImageView.contentMode = .scaleAspectFill
         headBackgroundImageView.layer.masksToBounds = true
+        headBackgroundImageView.isUserInteractionEnabled = true
+        
         
         //caramer
         let caramerButton = UIButton(type: .custom)
@@ -43,10 +49,11 @@ class TNSettingsViewController: TNBaseViewController {
             make.leading.equalTo(40.toPixel())
             make.bottom.equalTo(-40.toPixel())
         }
-        caramerButton.rx.tap.subscribe(onNext: { _ in
+        caramerButton.rx.tap.subscribe(onNext: { [weak self]_ in
             let imagePickerController = ImagePickerController()
             imagePickerController.delegate = self
-            present(imagePickerController, animated: true, completion: nil)
+            imagePickerController.imageLimit = 1
+            self?.present(imagePickerController, animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
         
@@ -57,6 +64,7 @@ class TNSettingsViewController: TNBaseViewController {
         settingsTableView.rowHeight = 115.toPixel()
         settingsTableView.contentInset = UIEdgeInsetsMake(500.toPixel(), 0, 0, 0)
         settingsTableView.register(TNSettingsTableViewCell.self, forCellReuseIdentifier: "cell")
+        settingsTableView.register(TNSettingsTableViewHeader.self, forCellReuseIdentifier: "head")
         view.addSubview(settingsTableView)
         
         settingsTableView.snp.makeConstraints { (make) in
@@ -65,29 +73,77 @@ class TNSettingsViewController: TNBaseViewController {
         
         settingsTableView.addSubview(headBackgroundImageView)
        
-        
-        settingsViewModel.items.bind(to: settingsTableView.rx.items(cellIdentifier: "cell", cellType: TNSettingsTableViewCell.self)){ (row, element, cell) in
-            cell.keyLabel.text = element.keys.first
-            cell.valueTextField.text = element.values.first
-            if row != 0 { cell.extensionSeparatorLine(equalToSuperView: false) }
 
-            }.disposed(by: disposeBag)
+//        settingsViewModel.items.bind(to: settingsTableView.rx.items(dataSource: dataSource))
         
-//        settingsTableView.rx.contentOffset.subscribe(onNext: { (point) in
-//            var headViewFrame = headBackgroundImageView.frame
-//            let offsetY = 314.toPixel() + Int(point.y).toPixel()
-//            headViewFrame.size.height = 500.toPixel() - offsetY * 0.4
+//        settingsViewModel.items.bind(to: settingsTableView.rx.items(cellIdentifier: "cell", cellType: TNSettingsTableViewCell.self)){ (row, element, cell) in
+//            cell.keyLabel.text = element.keys.first
+//            cell.valueTextField.text = element.values.first
+//            if row != 0 { cell.extensionSeparatorLine(equalToSuperView: false) }
 //
-//            if  headViewFrame.size.height < 500.toPixel() {
-//                headViewFrame.size.height = 500.toPixel()
-//            }
-//
-//            headBackgroundImageView.frame = headViewFrame
-//
-//        }).disposed(by: disposeBag)
+//            }.disposed(by: disposeBag)
         
-//        settingsViewModel.sections.bind(to: settingsTableView.rx)
+        let dataSource = RxTableViewSectionedReloadDataSource<SettingsModel>(configureCell:
+        { ds, tv, ip, item in
+
+            if ip.row == 0 {
+                let cell = tv.dequeueReusableCell(withIdentifier: "head", for: ip) as! TNSettingsTableViewHeader
+                cell.titleLabel.text = item.title
+                
+                return cell
+            }else {
+                let cell = tv.dequeueReusableCell(withIdentifier: "cell", for: ip) as! TNSettingsTableViewCell
+                cell.keyLabel.text = item.title
+                cell.valueTextField.text = item.content
+                cell.extensionSeparatorLine(equalToSuperView: ip.row == 1)
+                return cell
+            }
+        })
+        
+        settingsViewModel.model
+            .bind(to: settingsTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        settingsTableView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+        
+
     }
+    
+    
 
 }
 
+extension TNSettingsViewController: ImagePickerDelegate {
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        guard images.count > 0 else { return }
+        
+        let lightboxImages = images.map {
+            return LightboxImage(image: $0)
+        }
+        
+        let lightbox = LightboxController(images: lightboxImages, startIndex: 0)
+        imagePicker.present(lightbox, animated: true, completion: nil)
+    }
+    
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        headBackgroundImageView.image = images.first
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension TNSettingsViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.row == 0 ? 120.toPixel() : 115.toPixel()
+    }
+    
+    
+    
+}

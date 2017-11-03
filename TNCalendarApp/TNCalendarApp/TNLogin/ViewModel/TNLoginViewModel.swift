@@ -36,8 +36,16 @@ class TNLoginViewModel: NSObject {
     
     public func SignIn() {
     
+        var name = Visitor().name
+        var password = Visitor().password
+        
+        if let user = BmobUser.current() {
+            name = user.username
+            password = user.object(forKey: "password") as! String
+        }
+        
         //request
-        BmobUser.loginWithUsername(inBackground: Visitor().name, password: Visitor().password) { (userInfo, error) in
+        BmobUser.loginWithUsername(inBackground: name, password: password) { (userInfo, error) in
             guard error == nil else {
                 
                 //show tip
