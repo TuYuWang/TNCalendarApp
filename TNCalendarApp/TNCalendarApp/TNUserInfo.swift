@@ -12,14 +12,21 @@ struct TNUserInfo {
     var ID: String
     var password: String
     var headImagePath: String
+    var email: String
+    var gender: String
+    var birthday: String
     
-//    func Visitor() -> TNUserInfo {
-//        return TNUserInfo.init(name: "游客", ID: "RLw7jjju", password: "123456789", headImagePath: "")
-//    }
-    enum Visitor {
-        case name
-        case password
+    init(user: BmobUser) {
+        self.name = user.username
+        self.ID = user.objectId
+        self.headImagePath = ""
+        self.email = user.email
+        self.password = user.object(forKey: "psd") as! String
+        self.gender = user.object(forKey: "gender") as! String
+        self.birthday = user.object(forKey: "birthday") as! String
     }
+    
+
 }
 
 struct Visitor {

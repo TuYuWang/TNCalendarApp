@@ -32,26 +32,43 @@ extension SettingsModel: SectionModelType {
 class TNSettingsViewModel {
 
     var model: Observable<[SettingsModel]>
+    var userInfo: BmobUser
+    var userObservable: Variable<BmobUser>
+    
     
     init(viewController: TNBaseViewController) {
         
-        let userInfo = BmobUser.current()!
+        self.userInfo = BmobUser.current()!
 
-        self.model = Observable.just([SettingsModel(header: "GENERAL", items:
-            [SettingsCellModel(title: "GENERAL", content: ""),
-             SettingsCellModel(title: "NAME", content: userInfo.username),
-             SettingsCellModel(title: "EMAIL", content: userInfo.email),
-             SettingsCellModel(title: "PASSWORD", content: userInfo.object(forKey: "psd") as! String),
-             SettingsCellModel(title: "GENDER", content: userInfo.object(forKey: "gender") as! String),
-             SettingsCellModel(title: "BIRTHDAY", content: userInfo.object(forKey: "birthday") as! String)
-            ])])
-    
+        let dataSource = TNSettingsViewModel.dataSource(user: self.userInfo)
+        
+        self.model = Observable.just(dataSource)
+
+        self.userObservable = Variable(self.userInfo)
+
+        self.userObservable.asObservable().subscribe({ (user) in
+            self.model = Observable.just(TNSettingsViewModel.dataSource(user: user.element!))
+        })
+        .disposed(by: disposeBag)
+        
     }
     
     func update() {
         
-        let userObservable = Observable.just(BmobUser.current())
+        self.userObservable.value = BmobUser.current()!
         
+    }
+    
+    fileprivate class func dataSource(user: BmobUser) -> [SettingsModel] {
+        let dataSource = [SettingsModel(header: "GENERAL", items:
+            [SettingsCellModel(title: "GENERAL", content: ""),
+             SettingsCellModel(title: "NAME", content: user.username),
+             SettingsCellModel(title: "EMAIL", content: user.email),
+             SettingsCellModel(title: "PASSWORD", content: user.object(forKey: "psd") as! String),
+             SettingsCellModel(title: "GENDER", content: user.object(forKey: "gender") as! String),
+             SettingsCellModel(title: "BIRTHDAY", content: user.object(forKey: "birthday") as! String)
+            ])]
+        return dataSource
     }
 }
 

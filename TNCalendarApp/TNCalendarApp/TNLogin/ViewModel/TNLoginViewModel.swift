@@ -52,7 +52,7 @@ class TNLoginViewModel: NSObject {
                 print(error?.localizedDescription)
                 return
             }
-
+    
             guard UIApplication.shared.keyWindow?.rootViewController == TNLoginViewController.shared else {
                 TNLoginViewController.shared.dismiss(animated: true, completion: nil)
                 return

@@ -25,18 +25,19 @@ class TNSettingsViewController: TNBaseViewController {
         
         setContentViewBottomToSuper()
         
+        settingsViewModel = TNSettingsViewModel(viewController: self)
+
         setupUI()
         
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         settingsViewModel.update()
+        settingsTableView.reloadData()
     }
     
     fileprivate func setupUI() {
-        
-        settingsViewModel = TNSettingsViewModel(viewController: self)
         
         //head image background
         headBackgroundImageView = UIImageView(image: ImageName("AvatarMask"))
@@ -56,10 +57,11 @@ class TNSettingsViewController: TNBaseViewController {
             make.bottom.equalTo(-40.toPixel())
         }
         caramerButton.rx.tap.subscribe(onNext: { [weak self]_ in
-            let imagePickerController = ImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.imageLimit = 1
-            self?.present(imagePickerController, animated: true, completion: nil)
+//            let imagePickerController = ImagePickerController()
+//            imagePickerController.delegate = self
+//            imagePickerController.imageLimit = 1
+//            self?.present(imagePickerController, animated: true, completion: nil)
+            self?.settingsViewModel.update()
         }).disposed(by: disposeBag)
         
         
@@ -79,16 +81,6 @@ class TNSettingsViewController: TNBaseViewController {
         
         settingsTableView.addSubview(headBackgroundImageView)
        
-
-//        settingsViewModel.items.bind(to: settingsTableView.rx.items(dataSource: dataSource))
-        
-//        settingsViewModel.items.bind(to: settingsTableView.rx.items(cellIdentifier: "cell", cellType: TNSettingsTableViewCell.self)){ (row, element, cell) in
-//            cell.keyLabel.text = element.keys.first
-//            cell.valueTextField.text = element.values.first
-//            if row != 0 { cell.extensionSeparatorLine(equalToSuperView: false) }
-//
-//            }.disposed(by: disposeBag)
-        
         let dataSource = RxTableViewSectionedReloadDataSource<SettingsModel>(configureCell:
         { ds, tv, ip, item in
 
@@ -115,8 +107,6 @@ class TNSettingsViewController: TNBaseViewController {
             .disposed(by: disposeBag)
         
     }
-    
-    
 
 }
 
@@ -148,7 +138,5 @@ extension TNSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.row == 0 ? 120.toPixel() : 115.toPixel()
     }
-    
-    
     
 }
