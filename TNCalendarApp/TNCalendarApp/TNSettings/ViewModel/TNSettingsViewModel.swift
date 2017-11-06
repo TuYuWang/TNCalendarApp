@@ -31,7 +31,7 @@ extension SettingsModel: SectionModelType {
 
 class TNSettingsViewModel {
 
-    var model: Observable<[SettingsModel]>
+    var model: Variable<[SettingsModel]>
     var userInfo: BmobUser
     var userObservable: Variable<BmobUser>
     
@@ -42,12 +42,12 @@ class TNSettingsViewModel {
 
         let dataSource = TNSettingsViewModel.dataSource(user: self.userInfo)
         
-        self.model = Observable.just(dataSource)
+        self.model = Variable(dataSource)
 
         self.userObservable = Variable(self.userInfo)
 
         self.userObservable.asObservable().subscribe({ (user) in
-            self.model = Observable.just(TNSettingsViewModel.dataSource(user: user.element!))
+            self.model.value = TNSettingsViewModel.dataSource(user: user.element!)
         })
         .disposed(by: disposeBag)
         

@@ -98,7 +98,7 @@ class TNSettingsViewController: TNBaseViewController {
             }
         })
         
-        settingsViewModel.model
+        settingsViewModel.model.asObservable()
             .bind(to: settingsTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
