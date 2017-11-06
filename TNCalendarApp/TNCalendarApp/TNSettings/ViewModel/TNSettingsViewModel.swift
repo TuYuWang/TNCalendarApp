@@ -32,19 +32,17 @@ extension SettingsModel: SectionModelType {
 class TNSettingsViewModel {
 
     var model: Variable<[SettingsModel]>
-    var userInfo: BmobUser
     var userObservable: Variable<BmobUser>
-    
-    
+ 
     init(viewController: TNBaseViewController) {
         
-        self.userInfo = BmobUser.current()!
+        let userInfo = BmobUser.current()!
 
-        let dataSource = TNSettingsViewModel.dataSource(user: self.userInfo)
+        let dataSource = TNSettingsViewModel.dataSource(user: userInfo)
         
         self.model = Variable(dataSource)
 
-        self.userObservable = Variable(self.userInfo)
+        self.userObservable = Variable(userInfo)
 
         self.userObservable.asObservable().subscribe({ (user) in
             self.model.value = TNSettingsViewModel.dataSource(user: user.element!)
@@ -54,9 +52,7 @@ class TNSettingsViewModel {
     }
     
     func update() {
-        
         self.userObservable.value = BmobUser.current()!
-        
     }
     
     fileprivate class func dataSource(user: BmobUser) -> [SettingsModel] {
@@ -71,5 +67,4 @@ class TNSettingsViewModel {
         return dataSource
     }
 }
-
 

@@ -34,7 +34,6 @@ class TNSettingsViewController: TNBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         settingsViewModel.update()
-        settingsTableView.reloadData()
     }
     
     fileprivate func setupUI() {
@@ -57,11 +56,10 @@ class TNSettingsViewController: TNBaseViewController {
             make.bottom.equalTo(-40.toPixel())
         }
         caramerButton.rx.tap.subscribe(onNext: { [weak self]_ in
-//            let imagePickerController = ImagePickerController()
-//            imagePickerController.delegate = self
-//            imagePickerController.imageLimit = 1
-//            self?.present(imagePickerController, animated: true, completion: nil)
-            self?.settingsViewModel.update()
+            let imagePickerController = ImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.imageLimit = 1
+            self?.present(imagePickerController, animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
         
