@@ -78,6 +78,16 @@ class TNSettingsViewController: TNBaseViewController {
         
         settingsTableView.addSubview(headBackgroundImageView)
        
+        
+        //save button
+        let saveButton = TNBottomButton(type: .rootView)
+        saveButton.setTitle("SAVE", for: .normal)
+        view.addSubview(saveButton)
+        
+        saveButton.snp.makeConstraints { (make) in
+            make.edges.equalTo(UIEdgeInsetsMake(SCREEN_HEIGHT-130.toPixel(), 0, 0, 0))
+        }
+        
         let dataSource = RxTableViewSectionedReloadDataSource<SettingsModel>(configureCell:
         { ds, tv, ip, item in
 
@@ -91,6 +101,9 @@ class TNSettingsViewController: TNBaseViewController {
                 cell.keyLabel.text = item.title
                 cell.valueTextField.text = item.content
                 cell.extensionSeparatorLine(equalToSuperView: ip.row == 1)
+                
+//                cell.valueTextField.rx.text.changed
+                
                 return cell
             }
         })
@@ -102,16 +115,6 @@ class TNSettingsViewController: TNBaseViewController {
         settingsTableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
-        
-        
-        //save button
-        let saveButton = TNBottomButton(type: .rootView)
-        saveButton.setTitle("SAVE", for: .normal)
-        view.addSubview(saveButton)
-        
-        saveButton.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsetsMake(SCREEN_HEIGHT-130.toPixel(), 0, 0, 0))
-        }
         
         // TODO: Blog
         //-314 -194.5

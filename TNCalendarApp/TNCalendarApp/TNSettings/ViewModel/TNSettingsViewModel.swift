@@ -65,10 +65,10 @@ class TNSettingsViewModel {
                  SettingsCellModel(title: "PASSWORD", content: user.object(forKey: "psd") as! String),
                  SettingsCellModel(title: "GENDER", content: user.object(forKey: "gender") as! String),
                  SettingsCellModel(title: "BIRTHDAY", content: user.object(forKey: "birthday") as! String)
-            ]),
-             SettingsModel(header: "SAVE", items:
-                [SettingsCellModel(title: "SAVE", content: ""),
-                 SettingsCellModel(title: "NAME", content: user.username),])
+            ])
+//             SettingsModel(header: "SAVE", items:
+//                [SettingsCellModel(title: "SAVE", content: ""),
+//                 SettingsCellModel(title: "NAME", content: user.username),])
             ]
         return dataSource
     }
