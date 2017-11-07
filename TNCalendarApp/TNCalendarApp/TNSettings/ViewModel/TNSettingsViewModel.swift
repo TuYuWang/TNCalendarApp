@@ -29,10 +29,11 @@ extension SettingsModel: SectionModelType {
     }
 }
 
+// TODO: Blog
 class TNSettingsViewModel {
 
     var model: Variable<[SettingsModel]>
-    var userObservable: Variable<BmobUser>
+    private var userObservable: Variable<BmobUser>
  
     init(viewController: TNBaseViewController) {
         
@@ -56,14 +57,19 @@ class TNSettingsViewModel {
     }
     
     fileprivate class func dataSource(user: BmobUser) -> [SettingsModel] {
-        let dataSource = [SettingsModel(header: "GENERAL", items:
-            [SettingsCellModel(title: "GENERAL", content: ""),
-             SettingsCellModel(title: "NAME", content: user.username),
-             SettingsCellModel(title: "EMAIL", content: user.email),
-             SettingsCellModel(title: "PASSWORD", content: user.object(forKey: "psd") as! String),
-             SettingsCellModel(title: "GENDER", content: user.object(forKey: "gender") as! String),
-             SettingsCellModel(title: "BIRTHDAY", content: user.object(forKey: "birthday") as! String)
-            ])]
+        let dataSource =
+            [SettingsModel(header: "GENERAL", items:
+                [SettingsCellModel(title: "GENERAL", content: ""),
+                 SettingsCellModel(title: "NAME", content: user.username),
+                 SettingsCellModel(title: "EMAIL", content: user.email),
+                 SettingsCellModel(title: "PASSWORD", content: user.object(forKey: "psd") as! String),
+                 SettingsCellModel(title: "GENDER", content: user.object(forKey: "gender") as! String),
+                 SettingsCellModel(title: "BIRTHDAY", content: user.object(forKey: "birthday") as! String)
+            ]),
+             SettingsModel(header: "SAVE", items:
+                [SettingsCellModel(title: "SAVE", content: ""),
+                 SettingsCellModel(title: "NAME", content: user.username),])
+            ]
         return dataSource
     }
 }

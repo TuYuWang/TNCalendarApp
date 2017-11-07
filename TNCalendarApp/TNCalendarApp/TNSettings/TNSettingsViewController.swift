@@ -23,8 +23,6 @@ class TNSettingsViewController: TNBaseViewController {
         
         title = "SETTINGS"
         
-        setContentViewBottomToSuper()
-        
         settingsViewModel = TNSettingsViewModel(viewController: self)
 
         setupUI()
@@ -67,8 +65,9 @@ class TNSettingsViewController: TNBaseViewController {
         settingsTableView = UITableView()
         settingsTableView.backgroundColor = .clear
         settingsTableView.separatorStyle = .none
+        settingsTableView.showsVerticalScrollIndicator = false
         settingsTableView.rowHeight = 115.toPixel()
-        settingsTableView.contentInset = UIEdgeInsetsMake(500.toPixel(), 0, 0, 0)
+        settingsTableView.contentInset = UIEdgeInsetsMake(500.toPixel(), 0, 130.toPixel(), 0)
         settingsTableView.register(TNSettingsTableViewCell.self, forCellReuseIdentifier: "cell")
         settingsTableView.register(TNSettingsTableViewHeader.self, forCellReuseIdentifier: "head")
         view.addSubview(settingsTableView)
@@ -104,6 +103,32 @@ class TNSettingsViewController: TNBaseViewController {
             .setDelegate(self)
             .disposed(by: disposeBag)
         
+        
+        //save button
+        let saveButton = TNBottomButton(type: .rootView)
+        saveButton.setTitle("SAVE", for: .normal)
+        view.addSubview(saveButton)
+        
+        saveButton.snp.makeConstraints { (make) in
+            make.edges.equalTo(UIEdgeInsetsMake(SCREEN_HEIGHT-130.toPixel(), 0, 0, 0))
+        }
+        
+        // TODO: Blog
+        //-314 -194.5
+        settingsTableView.rx.contentOffset.subscribe(onNext: {[weak self] (offset) in
+            print(offset.y)
+            saveButton.alpha = min(1, (abs(offset.y)-314.0)/(-119.5))
+            self?.setContentViewBottomToSuper(offset: (abs(offset.y)-314.0))
+            let edge = min(130.toPixel(), (314.0-(abs(offset.y)))*widthFor750)
+            
+            saveButton.snp.updateConstraints { (make) in
+                make.edges.equalTo(UIEdgeInsetsMake(SCREEN_HEIGHT-edge, 0, 0, 0))
+            }
+            self?.settingsTableView.snp.updateConstraints({ (make) in
+                make.edges.equalTo(UIEdgeInsetsMake(0, 0, edge, 0))
+            })
+            
+        }).disposed(by: disposeBag)
     }
 
 }

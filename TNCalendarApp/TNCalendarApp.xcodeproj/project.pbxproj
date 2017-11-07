@@ -24,6 +24,7 @@
 		E93ECC921F9751B8005664DD /* TNUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93ECC911F9751B8005664DD /* TNUserInfo.swift */; };
 		E9740D561FAAC0DA00230762 /* TNSettingsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9740D551FAAC0DA00230762 /* TNSettingsTableViewHeader.swift */; };
 		E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97572821FA06E6900E8640E /* TNMenuViewController.swift */; };
+		E985065D1FB14CF1004A5F6E /* TNBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E985065C1FB14CF1004A5F6E /* TNBottomButton.swift */; };
 		E987160F1F99C9EC00AA357B /* TNLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987160A1F99C9EC00AA357B /* TNLoginViewController.swift */; };
 		E98716101F99C9EC00AA357B /* TNLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987160C1F99C9EC00AA357B /* TNLoginTableViewCell.swift */; };
 		E98716111F99C9EC00AA357B /* TNLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987160E1F99C9EC00AA357B /* TNLoginViewModel.swift */; };
@@ -78,6 +79,7 @@
 		E93ECC911F9751B8005664DD /* TNUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNUserInfo.swift; sourceTree = "<group>"; };
 		E9740D551FAAC0DA00230762 /* TNSettingsTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsTableViewHeader.swift; sourceTree = "<group>"; };
 		E97572821FA06E6900E8640E /* TNMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNMenuViewController.swift; sourceTree = "<group>"; };
+		E985065C1FB14CF1004A5F6E /* TNBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNBottomButton.swift; sourceTree = "<group>"; };
 		E987160A1F99C9EC00AA357B /* TNLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNLoginViewController.swift; sourceTree = "<group>"; };
 		E987160C1F99C9EC00AA357B /* TNLoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNLoginTableViewCell.swift; sourceTree = "<group>"; };
 		E987160E1F99C9EC00AA357B /* TNLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNLoginViewModel.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				E914B2F11F9F1343004DA36A /* TNLineView.swift */,
 				E93E9CF21F99DC5A00AEB088 /* TNBaseViewController.swift */,
 				E9F4EC2E1F9DF33700D457CC /* TNButton.swift */,
+				E985065C1FB14CF1004A5F6E /* TNBottomButton.swift */,
 				E93ECC891F9739DE005664DD /* TNWhiteLabel.swift */,
 				E994411C1F971E2C0005F730 /* TNCofiguration.swift */,
 				E994411F1F9723530005F730 /* PCH.swift */,
@@ -502,6 +505,7 @@
 				E9A02D1D1F99D9420076AD33 /* MPDTabBarViewController.swift in Sources */,
 				E93ECC921F9751B8005664DD /* TNUserInfo.swift in Sources */,
 				E99C09961FA31E1300DAE0A9 /* TNSettingsViewModel.swift in Sources */,
+				E985065D1FB14CF1004A5F6E /* TNBottomButton.swift in Sources */,
 				E9740D561FAAC0DA00230762 /* TNSettingsTableViewHeader.swift in Sources */,
 				E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */,
 				E9F4EC2F1F9DF33700D457CC /* TNButton.swift in Sources */,

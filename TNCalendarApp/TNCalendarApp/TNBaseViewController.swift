@@ -154,11 +154,13 @@ class TNBaseViewController: UIViewController {
         return UINavigationController(rootViewController: self)
     }
     
-    func setContentViewBottomToSuper() {
+    func setContentViewBottomToSuper(offset: CGFloat) {
         contentBackgroundImageView.snp.updateConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: min(abs(offset*widthFor750), 130.toPixel()), right: 0))
         }
     }
+    
+    
     
     func containMenuViewController(_ viewControllers: [UIViewController]) -> Bool {
         return  viewControllers.contains { $0.description.contains("TNMenuViewController") }
