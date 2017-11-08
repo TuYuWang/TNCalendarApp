@@ -20,7 +20,7 @@ let BMOBID = "fc65c6ca2f082cac62368c0646e2db09"
 let disposeBag = DisposeBag()
 let defaultTabbarSelected = 1
 let bottomButtonEdges = UIEdgeInsetsMake(SCREEN_HEIGHT-130.toPixel(), 0, 0, 0)
-
+let hudDelayTime = 1.0
 
 public func SFont(font: CGFloat) -> UIFont {
     return UIFont.systemFont(ofSize: font*widthFor750)

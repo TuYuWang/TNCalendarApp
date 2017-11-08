@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 enum NavigationItemType {
     case system
@@ -136,7 +137,11 @@ class TNBaseViewController: UIViewController {
 
             rightView.rx.tap.subscribe(onNext: { [weak self] _ in
             
-                self?.present(TNLoginViewController.shared, animated: true, completion: nil)
+                BmobUser.logout()
+                
+                HUD.flash(.labeledSuccess(title: nil, subtitle: "Logout Sucess"), onView: nil, delay: hudDelayTime, completion: { (complete) in
+                    self?.present(TNLoginViewController.shared, animated: true, completion: nil)
+                })
 
             }).disposed(by: disposeBag)
             

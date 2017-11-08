@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import PKHUD
 
 class TNRegisterViewModel: NSObject {
 
@@ -26,23 +27,24 @@ class TNRegisterViewModel: NSObject {
     
     public func signUp(newUser: BmobUser) {
         
+        HUD.show(.systemActivity)
         newUser.signUpInBackground { (success, error) in
             guard !success else {
                                 
                 //show sing up sucess
-                print(BmobUser.current())
-
-                //dismiss self
                 
-                self.registerViewController.dismiss(animated: false, completion: nil)
-
+                HUD.flash(.label("register success"), onView: nil, delay: hudDelayTime, completion: { (complete) in
+                    //dismiss self
+                    self.registerViewController.dismiss(animated: false, completion: nil)
+                })
+                
                 return
             }
             
             //show error tip
             print(error!.localizedDescription)
+            HUD.flash(.labeledSuccess(title: nil, subtitle: error!.localizedDescription), delay: hudDelayTime)
         }
         
     }
 }
-

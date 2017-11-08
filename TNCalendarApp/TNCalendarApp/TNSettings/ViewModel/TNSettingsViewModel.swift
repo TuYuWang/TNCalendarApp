@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import PKHUD
 
 struct SettingsModel {
     var header: String
@@ -57,11 +58,13 @@ class TNSettingsViewModel {
     }
     
     func update(background: BmobUser) {
+        HUD.show(.systemActivity)
         background.updateInBackground { (sucess, error) in
             guard sucess else {
-                print(error?.localizedDescription)
+                HUD.flash(.labeledError(title: nil, subtitle: error!.localizedDescription), delay: hudDelayTime)
                 return
             }
+            HUD.flash(.labeledSuccess(title: nil, subtitle: "Save Success"), delay: hudDelayTime)
         }
     }
     fileprivate class func dataSource(user: BmobUser) -> [SettingsModel] {

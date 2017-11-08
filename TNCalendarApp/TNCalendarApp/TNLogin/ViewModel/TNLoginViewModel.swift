@@ -8,6 +8,7 @@
 
 import RxSwift
 import RxDataSources
+import PKHUD
 
 class TNLoginViewModel: NSObject {
     
@@ -37,7 +38,7 @@ class TNLoginViewModel: NSObject {
     public func SignIn() {
     
         let defaultUser = BmobUser()
-        defaultUser.username = "游客"
+        defaultUser.username = "Test10"
         defaultUser.password = "12345678"
         defaultUser.setObject("12345678", forKey: "psd")
  
@@ -50,19 +51,26 @@ class TNLoginViewModel: NSObject {
         }
         
         //request
+        HUD.show(.systemActivity)
         BmobUser.loginWithUsername(inBackground: name, password: password) { (userInfo, error) in
             guard error == nil else {
                 
                 //show tip
-                print(error?.localizedDescription)
+                HUD.flash(.labeledError(title: nil, subtitle: error?.localizedDescription), onView: nil, delay: hudDelayTime, completion: nil)
                 return
             }
-    
-            guard UIApplication.shared.keyWindow?.rootViewController == TNLoginViewController.shared else {
-                TNLoginViewController.shared.dismiss(animated: true, completion: nil)
-                return
-            }
-            UIApplication.shared.keyWindow?.rootViewController = MPDTabBarViewController()
+            
+            //success
+            BmobUser.current().setObject(password, forKey: "psd")
+            print(BmobUser.current())
+            HUD.flash(.label("login sucess"), onView: nil, delay: hudDelayTime, completion: { (complete) in
+                
+                guard UIApplication.shared.keyWindow?.rootViewController == TNLoginViewController.shared else {
+                    TNLoginViewController.shared.dismiss(animated: true, completion: nil)
+                    return
+                }
+                UIApplication.shared.keyWindow?.rootViewController = MPDTabBarViewController()
+            })
 
         }
     }
