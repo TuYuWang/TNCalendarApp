@@ -17,6 +17,7 @@ class TNSettingsViewController: TNBaseViewController {
     var settingsTableView: UITableView!
     private var settingsViewModel: TNSettingsViewModel!
     private var headBackgroundImageView: UIImageView!
+    private var userInfo: BmobUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +28,13 @@ class TNSettingsViewController: TNBaseViewController {
 
         setupUI()
         
+        userInfo = BmobUser.current()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         settingsViewModel.update()
+        userInfo = BmobUser.current()
     }
     
     fileprivate func setupUI() {
@@ -88,6 +91,10 @@ class TNSettingsViewController: TNBaseViewController {
             make.edges.equalTo(UIEdgeInsetsMake(SCREEN_HEIGHT-130.toPixel(), 0, 0, 0))
         }
         
+        saveButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            self?.settingsViewModel.update(background: (self?.userInfo)!)
+        }).disposed(by: disposeBag)
+        
         let dataSource = RxTableViewSectionedReloadDataSource<SettingsModel>(configureCell:
         { ds, tv, ip, item in
 
@@ -102,7 +109,24 @@ class TNSettingsViewController: TNBaseViewController {
                 cell.valueTextField.text = item.content
                 cell.extensionSeparatorLine(equalToSuperView: ip.row == 1)
                 
-//                cell.valueTextField.rx.text.changed
+                let allValid = cell.valueTextField.rx.text.orEmpty
+                    .map { $0.characters.count >= 4 }
+                    .share(replay: 1)
+                
+                allValid
+                    .bind(to: saveButton.rx.isEnabled)
+                    .disposed(by: disposeBag)
+                
+                cell.valueTextField.rx.text.changed.subscribe(onNext: { [weak self](text) in
+                    if ip.row == 1 {
+                        self?.userInfo.username = text
+                    }else if ip.row == 3 {
+                        self?.userInfo.password = text
+                        self?.userInfo.setObject(text, forKey: "psd")
+                    }else {
+                        self?.userInfo.setObject(text, forKey: item.title.lowercased())
+                    }
+                }).disposed(by: disposeBag)
                 
                 return cell
             }
