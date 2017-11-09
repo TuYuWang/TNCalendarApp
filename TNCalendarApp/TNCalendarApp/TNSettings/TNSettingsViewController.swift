@@ -11,13 +11,15 @@ import RxSwift
 import ImagePicker
 import Lightbox
 import RxDataSources
+import Kingfisher
+import RxCocoa
 
 class TNSettingsViewController: TNBaseViewController {
 
     var settingsTableView: UITableView!
     private var settingsViewModel: TNSettingsViewModel!
     private var headBackgroundImageView: UIImageView!
-    private var userInfo: BmobUser!
+    private var userInfo: TNUserInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,26 +28,27 @@ class TNSettingsViewController: TNBaseViewController {
         
         settingsViewModel = TNSettingsViewModel(viewController: self)
 
+        userInfo = TNUserInfo(user: BmobUser.current())
+
         setupUI()
         
-        userInfo = BmobUser.current()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         settingsViewModel.update()
-        userInfo = BmobUser.current()
+        userInfo = TNUserInfo(user: BmobUser.current())
     }
     
     fileprivate func setupUI() {
         
         //head image background
-        headBackgroundImageView = UIImageView(image: ImageName("AvatarMask"))
+        headBackgroundImageView = UIImageView()
         headBackgroundImageView.frame = CGRect(x: 0, y: -500.toPixel(), width: SCREEN_WIDTH, height: 500.toPixel())
         headBackgroundImageView.contentMode = .scaleAspectFill
         headBackgroundImageView.layer.masksToBounds = true
         headBackgroundImageView.isUserInteractionEnabled = true
-        
+        headBackgroundImageView.kf.setImage(with: URL(string: userInfo.headImagePath), placeholder: ImageName("AvatarMask"))
         
         //caramer
         let caramerButton = UIButton(type: .custom)
@@ -93,6 +96,7 @@ class TNSettingsViewController: TNBaseViewController {
         
         saveButton.rx.tap.subscribe(onNext: {[weak self] _ in
             self?.settingsViewModel.update(background: (self?.userInfo)!)
+            
         }).disposed(by: disposeBag)
         
         let dataSource = RxTableViewSectionedReloadDataSource<SettingsModel>(configureCell:
@@ -119,19 +123,19 @@ class TNSettingsViewController: TNBaseViewController {
                 
                 cell.valueTextField.rx.text.changed.subscribe(onNext: { [weak self](text) in
                     if ip.row == 1 {
-                        self?.userInfo.username = text
+                        self?.userInfo.info.username = text
                     }else if ip.row == 3 {
-                        self?.userInfo.password = text
-                        self?.userInfo.setObject(text, forKey: "psd")
+                        self?.userInfo.info.password = text
+                        self?.userInfo.info.setObject(text, forKey: "psd")
                     }else {
-                        self?.userInfo.setObject(text, forKey: item.title.lowercased())
+                        self?.userInfo.info.setObject(text, forKey: item.title.lowercased())
                     }
                 }).disposed(by: disposeBag)
                 
                 return cell
             }
         })
-        
+    
         settingsViewModel.model.asObservable()
             .bind(to: settingsTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -161,6 +165,7 @@ class TNSettingsViewController: TNBaseViewController {
 }
 
 extension TNSettingsViewController: ImagePickerDelegate {
+    
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         guard images.count > 0 else { return }
         
@@ -174,6 +179,7 @@ extension TNSettingsViewController: ImagePickerDelegate {
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         headBackgroundImageView.image = images.first
+        userInfo.headImageData = BmobFile(fileName: "userHead.png", withFileData: UIImagePNGRepresentation(images.first!))
         imagePicker.dismiss(animated: true, completion: nil)
     }
     

@@ -38,7 +38,7 @@ class TNLoginViewModel: NSObject {
     public func SignIn() {
     
         let defaultUser = BmobUser()
-        defaultUser.username = "Test10"
+        defaultUser.username = "游客"
         defaultUser.password = "12345678"
         defaultUser.setObject("12345678", forKey: "psd")
  
@@ -63,7 +63,7 @@ class TNLoginViewModel: NSObject {
             //success
             BmobUser.current().setObject(password, forKey: "psd")
             print(BmobUser.current())
-            HUD.flash(.label("login sucess"), onView: nil, delay: hudDelayTime, completion: { (complete) in
+            HUD.flash(.label("Login Sucess"), onView: nil, delay: hudDelayTime, completion: { (complete) in
                 
                 guard UIApplication.shared.keyWindow?.rootViewController == TNLoginViewController.shared else {
                     TNLoginViewController.shared.dismiss(animated: true, completion: nil)

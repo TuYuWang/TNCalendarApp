@@ -20,5 +20,6 @@ pod 'ImagePicker', '~> 3.0.0'
 pod 'Lightbox'
 pod 'Hue'
 pod 'PKHUD', '~> 5.0'
+pod 'Kingfisher'
 
 end

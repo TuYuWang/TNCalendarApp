@@ -8,6 +8,7 @@ PODS:
   - Imaginary (3.0.1):
     - Cache (~> 4.0)
   - IQKeyboardManagerSwift (5.0.4)
+  - Kingfisher (4.2.0)
   - Lightbox (2.0.0):
     - Hue (~> 3.0)
     - Imaginary (~> 3.0)
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - Hue
   - ImagePicker (~> 3.0.0)
   - IQKeyboardManagerSwift
+  - Kingfisher
   - Lightbox
   - PKHUD (~> 5.0)
   - RxCocoa (~> 4.0)
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   ImagePicker: 973953c25960fe04729a7082a56194321c6762d2
   Imaginary: d8b6437d1bc49fc088615bc4dbb9e9380c2ba94c
   IQKeyboardManagerSwift: a0592bb636b10a9a1cf75d2b2c61144226226c84
+  Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
   Lightbox: 83ec9f4aba4c79fc7bb9bcd263386df9969f09bb
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
   RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
@@ -53,6 +56,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WechatOpenSDK: ad1e7be1b66416df847ac50830c798b70c9e365e
 
-PODFILE CHECKSUM: 22a71c4f8b489c1b48b9893510258cf9779262f4
+PODFILE CHECKSUM: d206b1afef38dfb5ae1d351ea0f4bb4c1eabf8d8
 
 COCOAPODS: 1.4.0.beta.2

@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import RxCocoa
 import PKHUD
 
 struct SettingsModel {
@@ -57,15 +58,29 @@ class TNSettingsViewModel {
         self.userObservable.value = BmobUser.current()!
     }
     
-    func update(background: BmobUser) {
+    func update(background: TNUserInfo) {
+        
         HUD.show(.systemActivity)
-        background.updateInBackground { (sucess, error) in
-            guard sucess else {
-                HUD.flash(.labeledError(title: nil, subtitle: error!.localizedDescription), delay: hudDelayTime)
-                return
+        background.info.updateInBackground { (success1, error1) in
+            
+            background.headImageData.save { (success2, error2) in
+                
+                guard success2 else {
+                    HUD.flash(.labeledError(title: nil, subtitle: error2!.localizedDescription), delay: hudDelayTime)
+                    return
+                }
+                
+                guard success1 else {
+                    HUD.flash(.labeledError(title: nil, subtitle: error1!.localizedDescription), delay: hudDelayTime)
+                    return
+                }
+                HUD.flash(.labeledSuccess(title: nil, subtitle: "Save Success"), delay: hudDelayTime)
             }
-            HUD.flash(.labeledSuccess(title: nil, subtitle: "Save Success"), delay: hudDelayTime)
+            
+            
         }
+        
+        
     }
     fileprivate class func dataSource(user: BmobUser) -> [SettingsModel] {
         let dataSource =
