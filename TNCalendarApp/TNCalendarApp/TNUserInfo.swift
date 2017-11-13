@@ -23,12 +23,12 @@ struct TNUserInfo {
         self.info = user
         self.name = user.username
         self.ID = user.objectId
-        self.headImagePath = user.separatedHeadImage()
+        self.headImagePath = user.separatedHeadImage().url
         self.email = user.email
         self.password = user.get(key: "psd")
         self.gender = user.get(key: "gender")
         self.birthday = user.get(key: "birthday")
-        self.headImageData = BmobFile(fileName: "userHead.png", withFileData: UIImagePNGRepresentation(ImageName("AvatarMask")!))
+        self.headImageData = user.separatedHeadImage()
 
     }
     
@@ -46,11 +46,14 @@ struct Visitor {
 
 extension BmobUser {
     
-    func separatedHeadImage() -> String {
-        guard get(key: "headImage") != "" else {
-            return ""
+    func separatedHeadImage() -> BmobFile {
+        
+        guard object(forKey: "headImage") != nil else {
+            let file = BmobFile(fileName: "\(self.username).png", withFileData: UIImagePNGRepresentation(ImageName("AvatarMask")!))
+            file?.url = "";
+            return file!
         }
-        return (object(forKey: "headImage") as! BmobFile).url
+        return (object(forKey: "headImage") as! BmobFile)
     }
     
     func get(key: String) -> String {

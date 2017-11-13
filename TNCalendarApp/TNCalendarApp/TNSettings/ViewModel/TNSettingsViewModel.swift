@@ -61,15 +61,20 @@ class TNSettingsViewModel {
     func update(background: TNUserInfo) {
         
         HUD.show(.systemActivity)
-        background.info.updateInBackground { (success1, error1) in
+
+        background.headImageData.save { (success2, error2) in
+
+            guard success2 else {
+                HUD.flash(.labeledError(title: nil, subtitle: error2!.localizedDescription), delay: hudDelayTime)
+                print(error2.debugDescription)
+                return
+            }
             
-            background.headImageData.save { (success2, error2) in
-                
-                guard success2 else {
-                    HUD.flash(.labeledError(title: nil, subtitle: error2!.localizedDescription), delay: hudDelayTime)
-                    return
-                }
-                
+            background.info.setObject(background.headImageData, forKey: "headImage")
+            background.info.updateInBackground()
+            
+            background.info.updateInBackground { (success1, error1) in
+
                 guard success1 else {
                     HUD.flash(.labeledError(title: nil, subtitle: error1!.localizedDescription), delay: hudDelayTime)
                     return
