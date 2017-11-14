@@ -31,6 +31,8 @@
 		E98716111F99C9EC00AA357B /* TNLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987160E1F99C9EC00AA357B /* TNLoginViewModel.swift */; };
 		E98716161F99CA2D00AA357B /* TNRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98716151F99CA2D00AA357B /* TNRegisterViewController.swift */; };
 		E98716271F99D52A00AA357B /* TNOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98716261F99D52800AA357B /* TNOverViewController.swift */; };
+		E98A6D021FBAD9EF002F9A3E /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98A6D011FBAD9EF002F9A3E /* CellView.xib */; };
+		E98A6D041FBADA82002F9A3E /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A6D031FBADA82002F9A3E /* CellView.swift */; };
 		E994411D1F971E2C0005F730 /* TNCofiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E994411C1F971E2C0005F730 /* TNCofiguration.swift */; };
 		E99C09941FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C09931FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift */; };
 		E99C09961FA31E1300DAE0A9 /* TNSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C09951FA31E1300DAE0A9 /* TNSettingsViewModel.swift */; };
@@ -86,6 +88,8 @@
 		E987160E1F99C9EC00AA357B /* TNLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNLoginViewModel.swift; sourceTree = "<group>"; };
 		E98716151F99CA2D00AA357B /* TNRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNRegisterViewController.swift; sourceTree = "<group>"; };
 		E98716261F99D52800AA357B /* TNOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNOverViewController.swift; sourceTree = "<group>"; };
+		E98A6D011FBAD9EF002F9A3E /* CellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
+		E98A6D031FBADA82002F9A3E /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		E994411C1F971E2C0005F730 /* TNCofiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNCofiguration.swift; sourceTree = "<group>"; };
 		E99C09931FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		E99C09951FA31E1300DAE0A9 /* TNSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				E93E9CF41F99DD1E00AEB088 /* TNCalendarViewController.swift */,
+				E98A6D001FBAD9BD002F9A3E /* View */,
+				E98A6CFF1FBAD9BD002F9A3E /* ViewModel */,
 			);
 			path = TNCalendar;
 			sourceTree = "<group>";
@@ -307,6 +313,22 @@
 				046ED9B81F9A3004008D83D0 /* ViewModel */,
 			);
 			path = TNOverView;
+			sourceTree = "<group>";
+		};
+		E98A6CFF1FBAD9BD002F9A3E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E98A6D001FBAD9BD002F9A3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E98A6D011FBAD9EF002F9A3E /* CellView.xib */,
+				E98A6D031FBADA82002F9A3E /* CellView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E99F98BA1FA18D6C00D3F88F /* TNSettings */ = {
@@ -412,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98A6D021FBAD9EF002F9A3E /* CellView.xib in Resources */,
 				E913D4D31F95F9ED001E205E /* LaunchScreen.storyboard in Resources */,
 				E913D4D01F95F9ED001E205E /* Assets.xcassets in Resources */,
 				E913D4CE1F95F9ED001E205E /* Main.storyboard in Resources */,
@@ -449,6 +472,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
@@ -466,6 +490,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
@@ -512,6 +537,7 @@
 				E985065D1FB14CF1004A5F6E /* TNBottomButton.swift in Sources */,
 				E9740D561FAAC0DA00230762 /* TNSettingsTableViewHeader.swift in Sources */,
 				E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */,
+				E98A6D041FBADA82002F9A3E /* CellView.swift in Sources */,
 				E9F4EC2F1F9DF33700D457CC /* TNButton.swift in Sources */,
 				E9A02D1B1F99D9420076AD33 /* MPDTabBarButton.swift in Sources */,
 				E93E9CF31F99DC5A00AEB088 /* TNBaseViewController.swift in Sources */,

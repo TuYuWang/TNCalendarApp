@@ -180,6 +180,7 @@ extension TNSettingsViewController: ImagePickerDelegate {
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         headBackgroundImageView.image = images.first
         userInfo.headImageData = BmobFile(fileName: "\(userInfo.name).png", withFileData: UIImagePNGRepresentation(images.first!))
+        settingsViewModel.update(headImage: userInfo)
         imagePicker.dismiss(animated: true, completion: nil)
     }
     

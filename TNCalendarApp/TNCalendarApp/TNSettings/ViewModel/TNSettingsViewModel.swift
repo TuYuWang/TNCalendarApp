@@ -62,31 +62,35 @@ class TNSettingsViewModel {
         
         HUD.show(.systemActivity)
 
-        background.headImageData.save { (success2, error2) in
+        background.info.updateInBackground { (success1, error1) in
+            
+            guard success1 else {
+                HUD.flash(.labeledError(title: nil, subtitle: error1!.localizedDescription), delay: hudDelayTime)
+                return
+            }
+            HUD.flash(.labeledSuccess(title: nil, subtitle: "Save Success"), delay: hudDelayTime)
+        }
+    }
+    
+    func update(headImage: TNUserInfo)  {
+        
+        HUD.show(.systemActivity)
 
+        headImage.headImageData.save { (success2, error2) in
+            
             guard success2 else {
                 HUD.flash(.labeledError(title: nil, subtitle: error2!.localizedDescription), delay: hudDelayTime)
                 print(error2.debugDescription)
                 return
             }
             
-            background.info.setObject(background.headImageData, forKey: "headImage")
-            background.info.updateInBackground()
-            
-            background.info.updateInBackground { (success1, error1) in
-
-                guard success1 else {
-                    HUD.flash(.labeledError(title: nil, subtitle: error1!.localizedDescription), delay: hudDelayTime)
-                    return
-                }
-                HUD.flash(.labeledSuccess(title: nil, subtitle: "Save Success"), delay: hudDelayTime)
-            }
-            
+            headImage.info.setObject(headImage.headImageData, forKey: "headImage")
+            headImage.info.updateInBackground()
+            HUD.flash(.labeledSuccess(title: nil, subtitle: "Save Success"), delay: hudDelayTime)
             
         }
-        
-        
     }
+    
     fileprivate class func dataSource(user: BmobUser) -> [SettingsModel] {
         let dataSource =
             [SettingsModel(header: "GENERAL", items:

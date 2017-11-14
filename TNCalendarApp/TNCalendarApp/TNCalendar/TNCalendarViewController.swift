@@ -7,29 +7,110 @@
 //
 
 import UIKit
+import JTAppleCalendar
 
 class TNCalendarViewController: TNBaseViewController {
+
+    var calendarView: JTAppleCalendarView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "calendar"
+        title = "CALENDAR"
+        
+        calendarView = JTAppleCalendarView()
+        calendarView.cellSize = SCREEN_WIDTH/7
+        calendarView.calendarDelegate = self
+        calendarView.calendarDataSource = self
+        calendarView.scrollDirection = .horizontal
+        calendarView.isPagingEnabled = true
+        calendarView.bounces = false
+        calendarView.showsHorizontalScrollIndicator = false
+        calendarView.backgroundColor = .clear
+        view.addSubview(calendarView)
+        calendarView.register(UINib(nibName: "CellView", bundle: nil), forCellWithReuseIdentifier: "CellView")
+        calendarView.snp.makeConstraints { (make) in
+            make.edges.equalTo(UIEdgeInsetsMake(0, 0, 470.toPixel(), 0))
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
+        
+        guard let myCustomCell = view as? CellView  else {
+            return
+        }
+
+        if cellState.isSelected {
+//            myCustomCell.dayLabel.textColor = .gray
+        } else {
+            if cellState.dateBelongsTo == .thisMonth {
+                myCustomCell.dayLabel.textColor = .white
+            } else {
+                myCustomCell.dayLabel.textColor = .gray
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func handleCellSelection(view: JTAppleCell?, cellState: CellState) {
+        guard let myCustomCell = view as? CellView  else {
+            return
+        }
+        if cellState.isSelected {
+            myCustomCell.selectedView.isHidden = false
+        } else {
+            myCustomCell.selectedView.isHidden = true
+        }
     }
-    */
+}
 
+extension TNCalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource {
+    
+    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+        let cell = calendarView.dequeueReusableJTAppleCell(withReuseIdentifier: "CellView", for: indexPath)
+        let myCustomCell = cell as! CellView
+
+        myCustomCell.dayLabel.text = cellState.text
+
+        return cell
+        
+    }
+    
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy MM dd"
+        
+        let startDate = formatter.date(from: "2016 02 01")!
+        let endDate = Date()
+        let parameters = ConfigurationParameters(startDate: startDate,
+                                                 endDate: endDate,
+                                                 numberOfRows: 6,
+                                                 calendar: Calendar.current,
+                                                 generateInDates: .forAllMonths,
+                                                 generateOutDates: .tillEndOfGrid,
+                                                 firstDayOfWeek: .sunday)
+        return parameters
+    }
+    
+    
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        let myCustomCell = cell as! CellView
+        
+        // Setup Cell text
+        myCustomCell.dayLabel.text = cellState.text
+        
+        handleCellTextColor(view: cell, cellState: cellState)
+        handleCellSelection(view: cell, cellState: cellState)
+    }
+
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellTextColor(view: cell, cellState: cellState)
+        handleCellSelection(view: cell, cellState: cellState)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellTextColor(view: cell, cellState: cellState)
+        handleCellSelection(view: cell, cellState: cellState)
+    }
 }
