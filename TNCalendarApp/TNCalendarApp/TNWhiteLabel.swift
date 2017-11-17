@@ -10,8 +10,9 @@
 
 import UIKit
 
-class TNWhiteLabel: UILabel {
 
+class TNWhiteLabel: UILabel {
+    
     init() {
         super.init(frame: CGRect.zero)
         textColor = Hex("#ffffff")

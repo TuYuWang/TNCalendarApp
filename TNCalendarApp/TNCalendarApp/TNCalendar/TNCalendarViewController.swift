@@ -9,6 +9,11 @@
 import UIKit
 import JTAppleCalendar
 
+let calendar_edege_top    = 128.toPixel()
+let calendar_edege_bottom = 550.toPixel()
+let calendarHeight        = SCREEN_HEIGHT - calendar_edege_bottom - calendar_edege_top
+let calendar_headHeight   = calendarHeight/7
+
 class TNCalendarViewController: TNBaseViewController {
 
     var calendarView: JTAppleCalendarView!
@@ -18,8 +23,15 @@ class TNCalendarViewController: TNBaseViewController {
 
         title = "CALENDAR"
         
+        let headView = Bundle.main.loadNibNamed("CalendarHeadView", owner: nil, options: nil)?.first as! UIView
+        view.addSubview(headView)
+        headView.snp.makeConstraints { (make) in
+            make.leading.trailing.equalTo(0)
+            make.top.equalTo(64)
+            make.height.equalTo(calendar_headHeight)
+        }
+        
         calendarView = JTAppleCalendarView()
-        calendarView.cellSize = SCREEN_WIDTH/7
         calendarView.calendarDelegate = self
         calendarView.calendarDataSource = self
         calendarView.scrollDirection = .horizontal
@@ -30,8 +42,10 @@ class TNCalendarViewController: TNBaseViewController {
         view.addSubview(calendarView)
         calendarView.register(UINib(nibName: "CellView", bundle: nil), forCellWithReuseIdentifier: "CellView")
         calendarView.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsetsMake(0, 0, 470.toPixel(), 0))
+            make.edges.equalTo(UIEdgeInsetsMake(calendar_edege_top+calendar_headHeight, 0, calendar_edege_bottom, 0))
         }
+        
+        
     }
 
 
@@ -42,12 +56,12 @@ class TNCalendarViewController: TNBaseViewController {
         }
 
         if cellState.isSelected {
-//            myCustomCell.dayLabel.textColor = .gray
+            myCustomCell.dayLabel.textColor = .red
         } else {
             if cellState.dateBelongsTo == .thisMonth {
                 myCustomCell.dayLabel.textColor = .white
             } else {
-                myCustomCell.dayLabel.textColor = .gray
+                myCustomCell.dayLabel.textColor = Hex("#bac8e1")
             }
         }
     }
@@ -71,7 +85,8 @@ extension TNCalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendar
         let myCustomCell = cell as! CellView
 
         myCustomCell.dayLabel.text = cellState.text
-
+        handleCellTextColor(view: cell, cellState: cellState)
+        handleCellSelection(view: cell, cellState: cellState)
         return cell
         
     }
@@ -81,14 +96,14 @@ extension TNCalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendar
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd"
         
-        let startDate = formatter.date(from: "2016 02 01")!
+        let startDate = formatter.date(from: "2017 02 01")!
         let endDate = Date()
         let parameters = ConfigurationParameters(startDate: startDate,
                                                  endDate: endDate,
                                                  numberOfRows: 6,
                                                  calendar: Calendar.current,
                                                  generateInDates: .forAllMonths,
-                                                 generateOutDates: .tillEndOfGrid,
+                                                 generateOutDates: .tillEndOfRow,
                                                  firstDayOfWeek: .sunday)
         return parameters
     }
@@ -113,4 +128,6 @@ extension TNCalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendar
         handleCellTextColor(view: cell, cellState: cellState)
         handleCellSelection(view: cell, cellState: cellState)
     }
+    
+    
 }

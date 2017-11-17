@@ -38,7 +38,7 @@ class TNLoginViewModel: NSObject {
     public func SignIn() {
     
         let defaultUser = BmobUser()
-        defaultUser.username = "Test29"
+        defaultUser.username = "游客"
         defaultUser.password = "12345678"
         defaultUser.setObject("12345678", forKey: "psd")
  

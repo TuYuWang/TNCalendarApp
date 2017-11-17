@@ -18,6 +18,8 @@
 		E914B2F21F9F1343004DA36A /* TNLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E914B2F11F9F1343004DA36A /* TNLineView.swift */; };
 		E928CB6B1FA07E76002F4406 /* TNMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E928CB6A1FA07E76002F4406 /* TNMenuCollectionViewCell.swift */; };
 		E928CB6D1FA096EB002F4406 /* TNMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E928CB6C1FA096EB002F4406 /* TNMenuViewModel.swift */; };
+		E931D7B61FBECC94007E95B0 /* CalendarHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E931D7B51FBECC94007E95B0 /* CalendarHeadView.xib */; };
+		E931D7B81FBED4C9007E95B0 /* TNDayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931D7B71FBED4C9007E95B0 /* TNDayLabel.swift */; };
 		E93E9CF31F99DC5A00AEB088 /* TNBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E9CF21F99DC5A00AEB088 /* TNBaseViewController.swift */; };
 		E93E9CF51F99DD1E00AEB088 /* TNCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E9CF41F99DD1E00AEB088 /* TNCalendarViewController.swift */; };
 		E93ECC8A1F9739DE005664DD /* TNWhiteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93ECC891F9739DE005664DD /* TNWhiteLabel.swift */; };
@@ -74,6 +76,8 @@
 		E914B2F11F9F1343004DA36A /* TNLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNLineView.swift; sourceTree = "<group>"; };
 		E928CB6A1FA07E76002F4406 /* TNMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		E928CB6C1FA096EB002F4406 /* TNMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNMenuViewModel.swift; sourceTree = "<group>"; };
+		E931D7B51FBECC94007E95B0 /* CalendarHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarHeadView.xib; sourceTree = "<group>"; };
+		E931D7B71FBED4C9007E95B0 /* TNDayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNDayLabel.swift; sourceTree = "<group>"; };
 		E93E9CF21F99DC5A00AEB088 /* TNBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNBaseViewController.swift; sourceTree = "<group>"; };
 		E93E9CF41F99DD1E00AEB088 /* TNCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNCalendarViewController.swift; sourceTree = "<group>"; };
 		E93ECC851F9727B5005664DD /* TNCalendarApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TNCalendarApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -325,8 +329,10 @@
 		E98A6D001FBAD9BD002F9A3E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E98A6D011FBAD9EF002F9A3E /* CellView.xib */,
 				E98A6D031FBADA82002F9A3E /* CellView.swift */,
+				E98A6D011FBAD9EF002F9A3E /* CellView.xib */,
+				E931D7B71FBED4C9007E95B0 /* TNDayLabel.swift */,
+				E931D7B51FBECC94007E95B0 /* CalendarHeadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -435,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E98A6D021FBAD9EF002F9A3E /* CellView.xib in Resources */,
+				E931D7B61FBECC94007E95B0 /* CalendarHeadView.xib in Resources */,
 				E913D4D31F95F9ED001E205E /* LaunchScreen.storyboard in Resources */,
 				E913D4D01F95F9ED001E205E /* Assets.xcassets in Resources */,
 				E913D4CE1F95F9ED001E205E /* Main.storyboard in Resources */,
@@ -541,6 +548,7 @@
 				E9F4EC2F1F9DF33700D457CC /* TNButton.swift in Sources */,
 				E9A02D1B1F99D9420076AD33 /* MPDTabBarButton.swift in Sources */,
 				E93E9CF31F99DC5A00AEB088 /* TNBaseViewController.swift in Sources */,
+				E931D7B81FBED4C9007E95B0 /* TNDayLabel.swift in Sources */,
 				E98716101F99C9EC00AA357B /* TNLoginTableViewCell.swift in Sources */,
 				E99C09941FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift in Sources */,
 				E928CB6D1FA096EB002F4406 /* TNMenuViewModel.swift in Sources */,
