@@ -22,6 +22,7 @@ class TNCalendarViewController: TNBaseViewController {
         super.viewDidLoad()
 
         title = "CALENDAR"
+        itemType = .calendar
         
         let headView = Bundle.main.loadNibNamed("CalendarHeadView", owner: nil, options: nil)?.first as! UIView
         view.addSubview(headView)
@@ -71,9 +72,9 @@ class TNCalendarViewController: TNBaseViewController {
             return
         }
         if cellState.isSelected {
-            myCustomCell.selectedView.isHidden = false
+            myCustomCell.squareLine.isHidden = false
         } else {
-            myCustomCell.selectedView.isHidden = true
+            myCustomCell.squareLine.isHidden = true
         }
     }
 }

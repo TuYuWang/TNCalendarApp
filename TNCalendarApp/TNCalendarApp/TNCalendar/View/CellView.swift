@@ -15,20 +15,21 @@ class CellView: JTAppleCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.borderWidth = 2.toPixel()
-        
-        let squareWidth = SCREEN_WIDTH/7
-        let X = squareWidth/2-35
-        let Y = squareWidth/2-35
-        
         squareLine = CAShapeLayer()
-        squareLine.frame = CGRect(x: X, y: Y, width: squareWidth, height: squareWidth)
         squareLine.borderColor = UIColor.white.cgColor
         squareLine.borderWidth = 1
+        squareLine.isHidden = true
         layer.addSublayer(squareLine)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-//        contentView.bounds = CGRect(x: 0, y: 0, width: SCREEN_WIDTH/7, height: SCREEN_WIDTH/7)
-//        layer.borderColor
+        let squareWidth = SCREEN_WIDTH/7 - 1
+        let X = (2*dayLabel.frame.midX-squareWidth)/2
+        let Y = (2*dayLabel.frame.midY-squareWidth)/2
+        
+        squareLine.frame = CGRect(x: X, y: Y, width: squareWidth, height: squareWidth)
     }
     
     func set(current: Bool) {
