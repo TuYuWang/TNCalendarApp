@@ -26,6 +26,8 @@ class TNSettingsViewController: TNBaseViewController {
         
         title = "SETTINGS"
         
+        setItemType(left: .menu, right: .logout)
+        
         settingsViewModel = TNSettingsViewModel(viewController: self)
 
         userInfo = TNUserInfo(user: BmobUser.current())

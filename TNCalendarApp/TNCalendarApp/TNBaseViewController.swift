@@ -21,6 +21,10 @@ enum NavigationItemType {
     case list
     case logout
     
+    enum menuEvent {
+        case pop
+        case present
+    }
 }
 
 class TNBaseViewController: UIViewController {
@@ -28,9 +32,9 @@ class TNBaseViewController: UIViewController {
     public var itemType: NavigationItemType = .system
     private var contentBackgroundImageView: UIImageView!
     
-    convenience init(type: NavigationItemType) {
+    convenience init(type: NavigationItemType = .system) {
         self.init()
-        itemType = type
+        setItemType(left: type)
     }
     
     override func viewDidLoad() {
@@ -59,102 +63,119 @@ class TNBaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setItemType(type: itemType)
+        setItemType(left: itemType)
         
     }
     
-    func setItemType(type: NavigationItemType) {
+    func setItemType(left: NavigationItemType, right: NavigationItemType = .system, menu: NavigationItemType.menuEvent = .pop) {
         
-        var imageName: String!
-        
+        var rightImageName: String!
+        var leftImageName: String!
+
         let leftView = TNGrayButton(type: .custom)
         let leftItem = UIBarButtonItem(customView: leftView)
         let rightView = TNGrayButton(type: .custom)
         let rightItem = UIBarButtonItem(customView: rightView)
         
-        
-        switch type {
+        switch left {
         case .system: return
+        case .userImage: return
+        case .setting: return
+        case .switchOver: return
+        case .search: return
+        case .calendar: return
+        case .list: return
+        case .logout: return
         case .close:
-            imageName = "Icon-Close"
+            leftImageName = "Icon-Close"
             
             leftView.rx.tap.subscribe(onNext: { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
             }).disposed(by: disposeBag)
             
-            navigationItem.leftBarButtonItem = leftItem
             break
         case .menu:
-            imageName = "Icon-Menu"
+            leftImageName = "Icon-Menu"
             
             leftView.rx.tap.subscribe(onNext: { [weak self] _ in
                 
                 guard let weakSelf = self else { return }
                 
-                if (weakSelf.containMenuViewController((weakSelf.navigationController?.viewControllers)!)) {
-                    weakSelf.navigationController?.popViewController(animated: true)
-                }else
-                {
+                switch menu {
+                case .pop:
+                    weakSelf.pop()
+                    break
+                case .present:
                     weakSelf.present(TNMenuViewController(type: .close).pushNavigationController(), animated: true, completion: nil)
+                    break
                 }
-                
             }).disposed(by: disposeBag)
             
-            navigationItem.leftBarButtonItem = leftItem
             break
-        case .userImage:
-            imageName = "Icon-Menu"
             
-            navigationItem.rightBarButtonItem = rightItem
+        }
+        
+        navigationItem.leftBarButtonItem = leftItem
+        leftView.setImage(ImageName(leftImageName), for: .normal)
+
+        
+        switch right {
+        case .system: return
+        case .close: return
+        case .menu: return
+        case .userImage:
+            rightImageName = "Icon-Menu"
+            
             break
         case .setting:
-            imageName = "Icon-Settings"
+            rightImageName = "Icon-Settings"
+            rightView.rx.tap.subscribe(onNext: { [weak self] _ in
+                self?.push(viewController: TNSettingsViewController())
+            }).disposed(by: disposeBag)
             
-            navigationItem.rightBarButtonItem = rightItem
             break
         case .switchOver:
-            imageName = "Icon-Settings"
+            rightImageName = "Icon-Settings"
             
-            navigationItem.rightBarButtonItem = rightItem
             break
         case .search:
-            imageName = "Icon-Search"
+            rightImageName = "Icon-Search"
             
-            navigationItem.rightBarButtonItem = rightItem
             break
         case .calendar:
-            imageName = "Icon-Calendar"
+            rightImageName = "Icon-Calendar"
             
-            navigationItem.rightBarButtonItem = rightItem
             break
         case .list:
-            imageName = "Icon-List"
+            rightImageName = "Icon-List"
             
-            navigationItem.rightBarButtonItem = rightItem
             break
         case .logout:
-            imageName = "Icon-Logout"
-
-            rightView.rx.tap.subscribe(onNext: { [weak self] _ in
+            rightImageName = "Icon-Logout"
             
+            rightView.rx.tap.subscribe(onNext: { [weak self] _ in
+                
                 BmobUser.logout()
                 
                 HUD.flash(.labeledSuccess(title: nil, subtitle: "Logout Sucess"), onView: nil, delay: hudDelayTime, completion: { (complete) in
                     self?.present(TNLoginViewController.shared, animated: true, completion: nil)
                 })
-
+                
             }).disposed(by: disposeBag)
             
-            navigationItem.rightBarButtonItem = rightItem
             break
-            
         }
-       
-        leftView.setImage(ImageName(imageName), for: .normal)
-        rightView.setImage(ImageName(imageName), for: .normal)
-        
+
+        navigationItem.rightBarButtonItem = rightItem
+        rightView.setImage(ImageName(rightImageName), for: .normal)
     }
 
+
+    
+}
+
+extension TNBaseViewController {
+    
     func pushNavigationController() -> UINavigationController {
         return UINavigationController(rootViewController: self)
     }
@@ -165,10 +186,18 @@ class TNBaseViewController: UIViewController {
         }
     }
     
-    
-    
     func containMenuViewController(_ viewControllers: [UIViewController]) -> Bool {
-        return  viewControllers.contains { $0.description.contains("TNMenuViewController") }
+        return viewControllers.contains { $0.description.contains("TNMenuViewController")}
+    }
+    
+    func push(viewController: TNBaseViewController) {
+        assert(navigationController != nil, "navigationController not be nil!")
+        UIApplication.rootViewController().tabBarView.isHidden = true
+        navigationController!.pushViewController(viewController, animated: true)
+    }
+    
+    func pop() {
+        UIApplication.rootViewController().tabBarView.isHidden = false
+        navigationController?.popViewController(animated: true)
     }
 }
-

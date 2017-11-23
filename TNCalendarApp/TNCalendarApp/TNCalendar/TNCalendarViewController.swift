@@ -9,20 +9,21 @@
 import UIKit
 import JTAppleCalendar
 
-let calendar_edege_top    = 128.toPixel()
-let calendar_edege_bottom = 550.toPixel()
+let calendar_edege_top    = 140.toPixel()
+let calendar_edege_bottom = 650.toPixel()
 let calendarHeight        = SCREEN_HEIGHT - calendar_edege_bottom - calendar_edege_top
-let calendar_headHeight   = calendarHeight/7
+let calendar_headHeight   = calendarHeight/8
 
 class TNCalendarViewController: TNBaseViewController {
 
     var calendarView: JTAppleCalendarView!
-
+    var calendarTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "CALENDAR"
-        itemType = .calendar
+        setItemType(left: .menu, right: .setting, menu: .present)
         
         let headView = Bundle.main.loadNibNamed("CalendarHeadView", owner: nil, options: nil)?.first as! UIView
         view.addSubview(headView)
@@ -40,12 +41,25 @@ class TNCalendarViewController: TNBaseViewController {
         calendarView.bounces = false
         calendarView.showsHorizontalScrollIndicator = false
         calendarView.backgroundColor = .clear
+        calendarView.selectDates([Date()])
         view.addSubview(calendarView)
         calendarView.register(UINib(nibName: "CellView", bundle: nil), forCellWithReuseIdentifier: "CellView")
         calendarView.snp.makeConstraints { (make) in
             make.edges.equalTo(UIEdgeInsetsMake(calendar_edege_top+calendar_headHeight, 0, calendar_edege_bottom, 0))
         }
         
+        calendarTableView = UITableView()
+        calendarTableView.dataSource = self
+        calendarTableView.delegate = self
+        view.addSubview(calendarTableView)
+        
+        calendarTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        calendarTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(calendarView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(-TABBAR_HEIGHT)
+        }
         
     }
 
@@ -55,15 +69,11 @@ class TNCalendarViewController: TNBaseViewController {
         guard let myCustomCell = view as? CellView  else {
             return
         }
-
-        if cellState.isSelected {
-            myCustomCell.dayLabel.textColor = .red
+        
+        if cellState.dateBelongsTo == .thisMonth {
+            myCustomCell.dayLabel.textColor = .white
         } else {
-            if cellState.dateBelongsTo == .thisMonth {
-                myCustomCell.dayLabel.textColor = .white
-            } else {
-                myCustomCell.dayLabel.textColor = Hex("#bac8e1")
-            }
+            myCustomCell.dayLabel.textColor = Hex("#bac8e1")
         }
     }
     
@@ -71,11 +81,8 @@ class TNCalendarViewController: TNBaseViewController {
         guard let myCustomCell = view as? CellView  else {
             return
         }
-        if cellState.isSelected {
-            myCustomCell.squareLine.isHidden = false
-        } else {
-            myCustomCell.squareLine.isHidden = true
-        }
+        myCustomCell.squareLine.isHidden = !cellState.isSelected
+//        myCustomCell.dayLabel.isHidden
     }
 }
 
@@ -97,8 +104,8 @@ extension TNCalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendar
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd"
         
-        let startDate = formatter.date(from: "2017 02 01")!
-        let endDate = Date()
+        let startDate = formatter.date(from: "2017 1 1")!
+        let endDate = formatter.date(from: "2018 12 31")!
         let parameters = ConfigurationParameters(startDate: startDate,
                                                  endDate: endDate,
                                                  numberOfRows: 6,
@@ -131,4 +138,18 @@ extension TNCalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendar
     }
     
     
+}
+
+extension TNCalendarViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        return cell
+    }
+    
+
 }

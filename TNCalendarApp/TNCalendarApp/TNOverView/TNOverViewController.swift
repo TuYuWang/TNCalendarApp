@@ -13,7 +13,8 @@ class TNOverViewController: TNBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "overview"
+        title = "OVERVIEW"
+        setItemType(left: .menu, menu: .present)
         
     }
 

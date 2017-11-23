@@ -13,8 +13,7 @@ class TNHomeViewController: TNBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setItemType(type: .menu)
-        setItemType(type: .userImage)
+        setItemType(left: .menu, right: .userImage, menu: .present)
     }
     
     override func viewDidLoad() {

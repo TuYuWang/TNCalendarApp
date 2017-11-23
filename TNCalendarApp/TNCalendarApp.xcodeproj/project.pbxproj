@@ -16,6 +16,7 @@
 		E913D4D31F95F9ED001E205E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E913D4D11F95F9ED001E205E /* LaunchScreen.storyboard */; };
 		E914B2F01F9F047C004DA36A /* TNRegisterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E914B2EF1F9F047C004DA36A /* TNRegisterHeaderView.swift */; };
 		E914B2F21F9F1343004DA36A /* TNLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E914B2F11F9F1343004DA36A /* TNLineView.swift */; };
+		E91CB06C1FC584660072EBE3 /* TNCaldndarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CB06B1FC584660072EBE3 /* TNCaldndarTableViewCell.swift */; };
 		E928CB6B1FA07E76002F4406 /* TNMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E928CB6A1FA07E76002F4406 /* TNMenuCollectionViewCell.swift */; };
 		E928CB6D1FA096EB002F4406 /* TNMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E928CB6C1FA096EB002F4406 /* TNMenuViewModel.swift */; };
 		E931D7B61FBECC94007E95B0 /* CalendarHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E931D7B51FBECC94007E95B0 /* CalendarHeadView.xib */; };
@@ -74,6 +75,7 @@
 		E913D4D41F95F9ED001E205E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E914B2EF1F9F047C004DA36A /* TNRegisterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNRegisterHeaderView.swift; sourceTree = "<group>"; };
 		E914B2F11F9F1343004DA36A /* TNLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNLineView.swift; sourceTree = "<group>"; };
+		E91CB06B1FC584660072EBE3 /* TNCaldndarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNCaldndarTableViewCell.swift; sourceTree = "<group>"; };
 		E928CB6A1FA07E76002F4406 /* TNMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		E928CB6C1FA096EB002F4406 /* TNMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNMenuViewModel.swift; sourceTree = "<group>"; };
 		E931D7B51FBECC94007E95B0 /* CalendarHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarHeadView.xib; sourceTree = "<group>"; };
@@ -329,9 +331,10 @@
 		E98A6D001FBAD9BD002F9A3E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E931D7B71FBED4C9007E95B0 /* TNDayLabel.swift */,
+				E91CB06B1FC584660072EBE3 /* TNCaldndarTableViewCell.swift */,
 				E98A6D031FBADA82002F9A3E /* CellView.swift */,
 				E98A6D011FBAD9EF002F9A3E /* CellView.xib */,
-				E931D7B71FBED4C9007E95B0 /* TNDayLabel.swift */,
 				E931D7B51FBECC94007E95B0 /* CalendarHeadView.xib */,
 			);
 			path = View;
@@ -552,6 +555,7 @@
 				E98716101F99C9EC00AA357B /* TNLoginTableViewCell.swift in Sources */,
 				E99C09941FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift in Sources */,
 				E928CB6D1FA096EB002F4406 /* TNMenuViewModel.swift in Sources */,
+				E91CB06C1FC584660072EBE3 /* TNCaldndarTableViewCell.swift in Sources */,
 				046ED9C81F9A5577008D83D0 /* TNRegisterViewModel.swift in Sources */,
 				E987160F1F99C9EC00AA357B /* TNLoginViewController.swift in Sources */,
 				E9A02D1C1F99D9420076AD33 /* MPDTabBarView.swift in Sources */,

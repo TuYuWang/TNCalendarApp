@@ -25,7 +25,7 @@ class CellView: JTAppleCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let squareWidth = SCREEN_WIDTH/7 - 1
+        let squareWidth = calendar_headHeight*1.2 - 1
         let X = (2*dayLabel.frame.midX-squareWidth)/2
         let Y = (2*dayLabel.frame.midY-squareWidth)/2
         

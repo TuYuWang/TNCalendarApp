@@ -16,47 +16,47 @@
             <rect key="frame" x="0.0" y="0.0" width="919" height="74"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-AN-Lnx">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="firstBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-AN-Lnx">
                     <rect key="frame" x="0.0" y="0.0" width="919" height="74"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7a-2V-dxa" userLabel="Sun" customClass="TNDayLabel" customModule="TNCalendarApp" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="131.5" height="74"/>
+                            <rect key="frame" x="0.0" y="53.5" width="131.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etQ-ph-1h7" customClass="TNDayLabel" customModule="TNCalendarApp" customModuleProvider="target">
-                            <rect key="frame" x="131.5" y="0.0" width="131" height="74"/>
+                            <rect key="frame" x="131.5" y="53.5" width="131" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJy-Xd-e6Z" customClass="TNDayLabel" customModule="TNCalendarApp" customModuleProvider="target">
-                            <rect key="frame" x="262.5" y="0.0" width="131.5" height="74"/>
+                            <rect key="frame" x="262.5" y="53.5" width="131.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOv-dt-nJW" customClass="TNDayLabel" customModule="TNCalendarApp" customModuleProvider="target">
-                            <rect key="frame" x="394" y="0.0" width="131" height="74"/>
+                            <rect key="frame" x="394" y="53.5" width="131" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6W-Wt-tKh" customClass="TNDayLabel" customModule="TNCalendarApp" customModuleProvider="target">
-                            <rect key="frame" x="525" y="0.0" width="131.5" height="74"/>
+                            <rect key="frame" x="525" y="53.5" width="131.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMh-bK-yA5" customClass="TNDayLabel" customModule="TNCalendarApp" customModuleProvider="target">
-                            <rect key="frame" x="656.5" y="0.0" width="131" height="74"/>
+                            <rect key="frame" x="656.5" y="53.5" width="131" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87t-Ha-qLq" customClass="TNDayLabel" customModule="TNCalendarApp" customModuleProvider="target">
-                            <rect key="frame" x="787.5" y="0.0" width="131.5" height="74"/>
+                            <rect key="frame" x="787.5" y="53.5" width="131.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

@@ -78,8 +78,7 @@ class TNMenuViewModel: NSObject {
     
     fileprivate func push(viewController: TNBaseViewController)
     {
-        viewController.setItemType(type: .menu)
-        viewController.setItemType(type: .logout)
+        viewController.setItemType(left: .menu, right: .logout)
         menuViewController.navigationController?.pushViewController(viewController, animated: true)
     }
 }
