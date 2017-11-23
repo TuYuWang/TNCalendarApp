@@ -135,22 +135,7 @@ extension UITableViewCell {
     }
     
     public func extensionSeparatorLine(equalToSuperView: Bool) {
-        guard let _ = contentView.viewWithTag(20171102) else {
-            
-            let lineView = TNLineView()
-            lineView.tag = 20171102
-            contentView.addSubview(lineView)
-            
-            let inset = equalToSuperView ? 0 : 59.toPixel()
-            
-            lineView.snp.makeConstraints { (make) in
-                make.top.equalToSuperview()
-                make.leading.equalTo(inset)
-                make.trailing.equalTo(-inset)
-                make.height.equalTo(2.toPixel())
-            }
-            return
-        }
+        extensionSeparatorLine(toView: contentView, equalToSuperView: equalToSuperView)
     }
 }
 
@@ -216,6 +201,29 @@ extension UIView {
         maskLayer.frame = bounds
         maskLayer.path = maskPath.cgPath
         layer.mask = maskLayer
+    }
+    
+    func extensionSeparatorLine(toView: UIView, equalToSuperView: Bool = true, topToSuperView: Bool = true) {
+        guard let _ = toView.viewWithTag(20171102) else {
+            
+            let lineView = TNLineView()
+            lineView.tag = 20171102
+            toView.addSubview(lineView)
+            
+            let inset = equalToSuperView ? 0 : 59.toPixel()
+            
+            lineView.snp.makeConstraints { (make) in
+                make.leading.equalTo(inset)
+                make.trailing.equalTo(-inset)
+                make.height.equalTo(2.toPixel())
+                if topToSuperView {
+                    make.top.equalToSuperview()
+                }else{
+                    make.bottom.equalToSuperview().offset(-2.toPixel())
+                }
+            }
+            return
+        }
     }
 }
 

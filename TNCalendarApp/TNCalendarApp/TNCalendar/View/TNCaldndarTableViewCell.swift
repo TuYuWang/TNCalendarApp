@@ -17,6 +17,9 @@ class TNCaldndarTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        selectionStyle   = .none
+        backgroundColor  = .clear
+        
         //title
         titlelab = TNWhiteLabel()
         contentView.addSubview(titlelab)

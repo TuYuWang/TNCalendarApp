@@ -43,6 +43,7 @@ class TNCalendarViewController: TNBaseViewController {
         calendarView.backgroundColor = .clear
         calendarView.selectDates([Date()])
         view.addSubview(calendarView)
+        view.extensionSeparatorLine(toView: calendarView, equalToSuperView: true, topToSuperView: false)
         calendarView.register(UINib(nibName: "CellView", bundle: nil), forCellWithReuseIdentifier: "CellView")
         calendarView.snp.makeConstraints { (make) in
             make.edges.equalTo(UIEdgeInsetsMake(calendar_edege_top+calendar_headHeight, 0, calendar_edege_bottom, 0))
@@ -51,9 +52,12 @@ class TNCalendarViewController: TNBaseViewController {
         calendarTableView = UITableView()
         calendarTableView.dataSource = self
         calendarTableView.delegate = self
+        calendarTableView.rowHeight = 146.toPixel()
+        calendarTableView.backgroundColor = .clear
+        calendarTableView.separatorStyle = .none
         view.addSubview(calendarTableView)
         
-        calendarTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        calendarTableView.register(TNCaldndarTableViewCell.self, forCellReuseIdentifier: "cell")
         
         calendarTableView.snp.makeConstraints { (make) in
             make.top.equalTo(calendarView.snp.bottom)
@@ -146,7 +150,12 @@ extension TNCalendarViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TNCaldndarTableViewCell
+        cell.titlelab.text = "party!"
+        cell.timelab.text  = "8:00 am"
+        cell.wherelab.text = "house of Tun"
+        cell.extensionSeparatorLine(equalToSuperView: false)
+       
         
         return cell
     }
