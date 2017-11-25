@@ -43,28 +43,35 @@ class TNCalendarViewController: TNBaseViewController {
         calendarView.backgroundColor = .clear
         calendarView.selectDates([Date()])
         view.addSubview(calendarView)
-        view.extensionSeparatorLine(toView: calendarView, equalToSuperView: true, topToSuperView: false)
         calendarView.register(UINib(nibName: "CellView", bundle: nil), forCellWithReuseIdentifier: "CellView")
         calendarView.snp.makeConstraints { (make) in
             make.edges.equalTo(UIEdgeInsetsMake(calendar_edege_top+calendar_headHeight, 0, calendar_edege_bottom, 0))
+        }
+
+        let line = TNLineView()
+        view.addSubview(line)
+        line.snp.makeConstraints { (make) in
+            make.top.equalTo(calendarView.snp.bottom)
+            make.height.equalTo(2.toPixel())
+            make.leading.trailing.equalToSuperview()
         }
         
         calendarTableView = UITableView()
         calendarTableView.dataSource = self
         calendarTableView.delegate = self
-        calendarTableView.rowHeight = 146.toPixel()
+        calendarTableView.rowHeight = 170.toPixel()
         calendarTableView.backgroundColor = .clear
         calendarTableView.separatorStyle = .none
         view.addSubview(calendarTableView)
-        
+
         calendarTableView.register(TNCaldndarTableViewCell.self, forCellReuseIdentifier: "cell")
         
         calendarTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(calendarView.snp.bottom)
+            make.top.equalTo(calendarView.snp.bottom).offset(2.toPixel())
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(-TABBAR_HEIGHT)
         }
-        
+
     }
 
 
@@ -146,7 +153,7 @@ extension TNCalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendar
 
 extension TNCalendarViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,7 +161,10 @@ extension TNCalendarViewController: UITableViewDelegate, UITableViewDataSource{
         cell.titlelab.text = "party!"
         cell.timelab.text  = "8:00 am"
         cell.wherelab.text = "house of Tun"
-        cell.extensionSeparatorLine(equalToSuperView: false)
+        
+        if indexPath.row != 0 {
+            cell.extensionSeparatorLine(equalToSuperView: false)
+        }
        
         
         return cell

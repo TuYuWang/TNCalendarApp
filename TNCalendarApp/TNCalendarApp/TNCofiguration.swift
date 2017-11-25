@@ -219,7 +219,7 @@ extension UIView {
                 if topToSuperView {
                     make.top.equalToSuperview()
                 }else{
-                    make.bottom.equalToSuperview().offset(-2.toPixel())
+                    make.bottom.equalToSuperview().offset(2.toPixel())
                 }
             }
             return
