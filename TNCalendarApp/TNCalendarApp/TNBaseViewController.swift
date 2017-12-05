@@ -39,6 +39,8 @@ class TNBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setItemType(left: itemType)
 
         view.backgroundColor = .white
         
@@ -62,9 +64,7 @@ class TNBaseViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        setItemType(left: itemType)
-        
+
     }
     
     func setItemType(left: NavigationItemType, right: NavigationItemType = .system, menu: NavigationItemType.menuEvent = .pop) {
@@ -116,6 +116,7 @@ class TNBaseViewController: UIViewController {
         }
         
         navigationItem.leftBarButtonItem = leftItem
+        leftView.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
         leftView.setImage(ImageName(leftImageName), for: .normal)
 
         
@@ -145,6 +146,12 @@ class TNBaseViewController: UIViewController {
         case .calendar:
             rightImageName = "Icon-Calendar"
             
+            rightView.rx.tap.subscribe(onNext: { [weak self] _ in
+                UIApplication.rootViewController().selectedIndex = 0
+                self?.dismiss(animated: true, completion: nil)
+            }).disposed(by: disposeBag)
+
+
             break
         case .list:
             rightImageName = "Icon-List"
@@ -165,9 +172,11 @@ class TNBaseViewController: UIViewController {
             
             break
         }
-
+        
         navigationItem.rightBarButtonItem = rightItem
+        rightView.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
         rightView.setImage(ImageName(rightImageName), for: .normal)
+
     }
 
 

@@ -27,7 +27,7 @@ public func SFont(font: CGFloat) -> UIFont {
 }
 
 public func ImageName(_ imageName: String) -> UIImage? {
-    return UIImage.init(named: imageName)
+    return UIImage(named: imageName)
 }
 
 func Hex(_ hexStr: String) -> UIColor {
@@ -223,6 +223,31 @@ extension UIView {
                 }
             }
             return
+        }
+    }
+    
+    enum linePosition {
+        case right
+        case left
+        case center
+    }
+    
+    func extensionVerticalLine(position: linePosition) {
+        
+        let line = TNLineView()
+        addSubview(line)
+        
+        line.frame = CGRect(x: 0, y: 0, width: 2.toPixel(), height: frame.size.height)
+        
+        switch position {
+        case .right:
+            line.center = CGPoint(x: frame.size.width-1.toPixel(), y: line.center.y)
+            break
+        case .center:
+            line.center = center
+            break
+        default:
+            break
         }
     }
 }

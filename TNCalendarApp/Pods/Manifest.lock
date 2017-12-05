@@ -2,6 +2,9 @@ PODS:
   - BmobSDK (2.2.1):
     - WechatOpenSDK (~> 1.7.7)
   - Cache (4.1.2)
+  - Charts (3.0.4):
+    - Charts/Core (= 3.0.4)
+  - Charts/Core (3.0.4)
   - Differentiator (3.0.0)
   - Hue (3.0.0)
   - ImagePicker (3.0.0)
@@ -27,6 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - BmobSDK
+  - Charts
   - Hue
   - ImagePicker (~> 3.0.0)
   - IQKeyboardManagerSwift
@@ -43,6 +47,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   BmobSDK: 952f0ca736deae9d1b6591d72337df7d9072d4f2
   Cache: bd0233fc688b5e83a27bcd87807db7e6f23adcc5
+  Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   Differentiator: 772c2e4e2093584a0501a72019a7cd19e1a72cc8
   Hue: b8fe1e43eef13631331eebecb2198b68e2622f95
   ImagePicker: 973953c25960fe04729a7082a56194321c6762d2
@@ -59,6 +64,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WechatOpenSDK: ad1e7be1b66416df847ac50830c798b70c9e365e
 
-PODFILE CHECKSUM: 6c39c11cd6b9f22f2ecdaf33cd597bc9889a9cee
+PODFILE CHECKSUM: 7d8f747fbd514dfad9ee46a794e225b96c765677
 
 COCOAPODS: 1.4.0.beta.2

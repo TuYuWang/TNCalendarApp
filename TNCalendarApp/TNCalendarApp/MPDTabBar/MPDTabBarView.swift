@@ -53,10 +53,11 @@ class MPDTabBarView: UIView {
     @objc func barBarButtonClick(_ button:MPDTabBarButton) {
         
         let i = button.tag - 2017
-        MPDWaterRippleView.showInView(view: self, center: button.center)
         guard self.delegate != nil else { return }
         self.delegate?.MPDTabBar(tabBar: button, index: i)
         
+        guard i != 1 else { return }
+        MPDWaterRippleView.showInView(view: self, center: button.center)
         setSelectedItem(index: i)
         
     }

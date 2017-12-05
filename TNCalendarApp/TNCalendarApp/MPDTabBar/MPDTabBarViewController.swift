@@ -54,6 +54,13 @@ class MPDTabBarViewController: UITabBarController {
 extension MPDTabBarViewController: MPDTabBarViewViewDelegate {
 
     func MPDTabBar(tabBar: MPDTabBarButton, index: Int) {
+        
+        guard index != 1 else {
+            
+            let currentNavigateionController = UIApplication.currentNavigationRootViewController()
+            currentNavigateionController.navigationController?.present(TNAddViewController().pushNavigationController(), animated: true, completion: nil)
+            return
+        }
         self.selectedIndex = index
     }
 }

@@ -17,7 +17,7 @@ class TNMenuViewController: TNBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Navigate"
+        title = "NAVIGATE"
         
         setupUI()
     }
@@ -49,8 +49,13 @@ class TNMenuViewController: TNBaseViewController {
         menuCollectionView.register(TNMenuCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         view.addSubview(menuCollectionView)
     
+        var top = 128
+        if #available(iOS 11, *) {
+            top = 0
+        }
+        
         menuCollectionView.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsetsMake(0, 0, 130.toPixel(), 0))
+            make.edges.equalTo(UIEdgeInsetsMake(top.toPixel(), 0, 130.toPixel(), 0))
         }
         
         menuViewModel.items.bind(to: menuCollectionView.rx.items(cellIdentifier: "cell", cellType: TNMenuCollectionViewCell.self)) { (row, element, cell) in

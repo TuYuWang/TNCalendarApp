@@ -22,5 +22,5 @@ pod 'Hue'
 pod 'PKHUD', '~> 5.0'
 pod 'Kingfisher'
 pod 'JTAppleCalendar'
-
+pod 'Charts'
 end
