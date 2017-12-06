@@ -43,6 +43,9 @@
 		E99C09941FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C09931FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift */; };
 		E99C09961FA31E1300DAE0A9 /* TNSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C09951FA31E1300DAE0A9 /* TNSettingsViewModel.swift */; };
 		E99F98BE1FA18D8500D3F88F /* TNSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F98BD1FA18D8500D3F88F /* TNSettingsViewController.swift */; };
+		E9A0237B1FD7C84A001BD977 /* TNAddTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A0237A1FD7C84A001BD977 /* TNAddTopView.swift */; };
+		E9A0237D1FD7C910001BD977 /* TNAddCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A0237C1FD7C910001BD977 /* TNAddCenterView.swift */; };
+		E9A0237F1FD7DFE7001BD977 /* TNListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A0237E1FD7DFE7001BD977 /* TNListCell.swift */; };
 		E9A02D151F99D6C20076AD33 /* TNHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A02D141F99D6C20076AD33 /* TNHomeViewController.swift */; };
 		E9A02D1B1F99D9420076AD33 /* MPDTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A02D171F99D9420076AD33 /* MPDTabBarButton.swift */; };
 		E9A02D1C1F99D9420076AD33 /* MPDTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A02D181F99D9420076AD33 /* MPDTabBarView.swift */; };
@@ -106,6 +109,9 @@
 		E99C09931FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		E99C09951FA31E1300DAE0A9 /* TNSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsViewModel.swift; sourceTree = "<group>"; };
 		E99F98BD1FA18D8500D3F88F /* TNSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSettingsViewController.swift; sourceTree = "<group>"; };
+		E9A0237A1FD7C84A001BD977 /* TNAddTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNAddTopView.swift; sourceTree = "<group>"; };
+		E9A0237C1FD7C910001BD977 /* TNAddCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNAddCenterView.swift; sourceTree = "<group>"; };
+		E9A0237E1FD7DFE7001BD977 /* TNListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNListCell.swift; sourceTree = "<group>"; };
 		E9A02D141F99D6C20076AD33 /* TNHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNHomeViewController.swift; sourceTree = "<group>"; };
 		E9A02D171F99D9420076AD33 /* MPDTabBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDTabBarButton.swift; sourceTree = "<group>"; };
 		E9A02D181F99D9420076AD33 /* MPDTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDTabBarView.swift; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 				E98716091F99C9EB00AA357B /* TNLogin */,
 				E98716121F99CA1900AA357B /* TNRegister */,
 				E93ECC911F9751B8005664DD /* TNUserInfo.swift */,
+				E9A0237E1FD7DFE7001BD977 /* TNListCell.swift */,
 				E914B2F11F9F1343004DA36A /* TNLineView.swift */,
 				E93E9CF21F99DC5A00AEB088 /* TNBaseViewController.swift */,
 				E9F4EC2E1F9DF33700D457CC /* TNButton.swift */,
@@ -267,6 +274,8 @@
 		E974DD2B1FD69DD400E3EBEE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9A0237A1FD7C84A001BD977 /* TNAddTopView.swift */,
+				E9A0237C1FD7C910001BD977 /* TNAddCenterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -580,6 +589,7 @@
 				E93ECC921F9751B8005664DD /* TNUserInfo.swift in Sources */,
 				E974DD291FD6806C00E3EBEE /* TNOverCenterView.swift in Sources */,
 				E99C09961FA31E1300DAE0A9 /* TNSettingsViewModel.swift in Sources */,
+				E9A0237F1FD7DFE7001BD977 /* TNListCell.swift in Sources */,
 				E985065D1FB14CF1004A5F6E /* TNBottomButton.swift in Sources */,
 				E9740D561FAAC0DA00230762 /* TNSettingsTableViewHeader.swift in Sources */,
 				E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */,
@@ -600,7 +610,9 @@
 				E974DD271FD667AC00E3EBEE /* TNOverTopView.swift in Sources */,
 				E98716271F99D52A00AA357B /* TNOverViewController.swift in Sources */,
 				046ED9CA1F9A5AB0008D83D0 /* TNRegisterViewCell.swift in Sources */,
+				E9A0237D1FD7C910001BD977 /* TNAddCenterView.swift in Sources */,
 				E9A02D151F99D6C20076AD33 /* TNHomeViewController.swift in Sources */,
+				E9A0237B1FD7C84A001BD977 /* TNAddTopView.swift in Sources */,
 				E914B2F01F9F047C004DA36A /* TNRegisterHeaderView.swift in Sources */,
 				E93ECC8A1F9739DE005664DD /* TNWhiteLabel.swift in Sources */,
 				E93E9CF51F99DD1E00AEB088 /* TNCalendarViewController.swift in Sources */,

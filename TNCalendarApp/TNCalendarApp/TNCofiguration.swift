@@ -244,7 +244,7 @@ extension UIView {
             line.center = CGPoint(x: frame.size.width-1.toPixel(), y: line.center.y)
             break
         case .center:
-            line.center = center
+            line.center = CGPoint(x: frame.midX-1.toPixel(), y: line.center.y)
             break
         default:
             break
