@@ -49,13 +49,16 @@ class TNMenuViewModel: NSObject {
                 dismiss(index: 0)
                 break
             case .some(.groups):
+                menuViewController.navigationController?.pushViewController(TNGroupViewController(), animated: true)
                 break
             case .some(.overview):
                 dismiss(index: 2)
                 break
             case .some(.list):
+                menuViewController.navigationController?.pushViewController(TNListViewController(), animated: true)
                 break
             case .some(.profile):
+                menuViewController.navigationController?.pushViewController(TNProfileViewController(), animated: true)
                 break
             case .some(.timeline):
                 break
