@@ -10,6 +10,8 @@
 		046ED9C81F9A5577008D83D0 /* TNRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046ED9C71F9A5577008D83D0 /* TNRegisterViewModel.swift */; };
 		046ED9CA1F9A5AB0008D83D0 /* TNRegisterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046ED9C91F9A5AB0008D83D0 /* TNRegisterViewCell.swift */; };
 		ADE592FEA48B9E81E3949119 /* Pods_TNCalendarApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA838BF937403E49593730B /* Pods_TNCalendarApp.framework */; };
+		E911516C1FE2533F00006EC0 /* TNProfileCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911516B1FE2533F00006EC0 /* TNProfileCenterView.swift */; };
+		E911516E1FE2535C00006EC0 /* TNProfileBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911516D1FE2535C00006EC0 /* TNProfileBottomView.swift */; };
 		E913D4C91F95F9ED001E205E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D4C81F95F9ED001E205E /* AppDelegate.swift */; };
 		E913D4CE1F95F9ED001E205E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E913D4CC1F95F9ED001E205E /* Main.storyboard */; };
 		E913D4D01F95F9ED001E205E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E913D4CF1F95F9ED001E205E /* Assets.xcassets */; };
@@ -78,6 +80,8 @@
 		0505FAA23AA3B943B7BA86CD /* Pods-TNCalendarApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TNCalendarApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TNCalendarApp/Pods-TNCalendarApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9AA838BF937403E49593730B /* Pods_TNCalendarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TNCalendarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAB869A22B7228D791B98BD /* Pods-TNCalendarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TNCalendarApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TNCalendarApp/Pods-TNCalendarApp.release.xcconfig"; sourceTree = "<group>"; };
+		E911516B1FE2533F00006EC0 /* TNProfileCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNProfileCenterView.swift; sourceTree = "<group>"; };
+		E911516D1FE2535C00006EC0 /* TNProfileBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNProfileBottomView.swift; sourceTree = "<group>"; };
 		E913D4C51F95F9ED001E205E /* TNCalendarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCalendarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E913D4C81F95F9ED001E205E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E913D4CD1F95F9ED001E205E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 		E9357B621FE122E5007314DA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E911516B1FE2533F00006EC0 /* TNProfileCenterView.swift */,
+				E911516D1FE2535C00006EC0 /* TNProfileBottomView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -678,6 +684,7 @@
 				E99C09961FA31E1300DAE0A9 /* TNSettingsViewModel.swift in Sources */,
 				E9A0237F1FD7DFE7001BD977 /* TNListCell.swift in Sources */,
 				E985065D1FB14CF1004A5F6E /* TNBottomButton.swift in Sources */,
+				E911516C1FE2533F00006EC0 /* TNProfileCenterView.swift in Sources */,
 				E9740D561FAAC0DA00230762 /* TNSettingsTableViewHeader.swift in Sources */,
 				E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */,
 				E98A6D041FBADA82002F9A3E /* CellView.swift in Sources */,
@@ -687,6 +694,7 @@
 				E931D7B81FBED4C9007E95B0 /* TNDayLabel.swift in Sources */,
 				E98716101F99C9EC00AA357B /* TNLoginTableViewCell.swift in Sources */,
 				E99C09941FA31D2700DAE0A9 /* TNSettingsTableViewCell.swift in Sources */,
+				E911516E1FE2535C00006EC0 /* TNProfileBottomView.swift in Sources */,
 				E928CB6D1FA096EB002F4406 /* TNMenuViewModel.swift in Sources */,
 				E91CB06C1FC584660072EBE3 /* TNCaldndarTableViewCell.swift in Sources */,
 				046ED9C81F9A5577008D83D0 /* TNRegisterViewModel.swift in Sources */,
