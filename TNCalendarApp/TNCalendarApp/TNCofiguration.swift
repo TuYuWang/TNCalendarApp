@@ -137,6 +137,7 @@ extension UITableViewCell {
     public func extensionSeparatorLine(equalToSuperView: Bool) {
         extensionSeparatorLine(toView: contentView, equalToSuperView: equalToSuperView)
     }
+    
 }
 
 extension UIColor {
@@ -234,20 +235,26 @@ extension UIView {
     
     func extensionVerticalLine(position: linePosition) {
         
-        let line = TNLineView()
-        addSubview(line)
-        
-        line.frame = CGRect(x: 0, y: 0, width: 2.toPixel(), height: frame.size.height)
-        
-        switch position {
-        case .right:
-            line.center = CGPoint(x: frame.size.width-1.toPixel(), y: line.center.y)
-            break
-        case .center:
-            line.center = CGPoint(x: frame.midX-1.toPixel(), y: line.center.y)
-            break
-        default:
-            break
+        guard let _ = viewWithTag(20171216) else {
+            let line = TNLineView()
+            line.tag = 20171216
+            
+            addSubview(line)
+            
+            line.frame = CGRect(x: 0, y: 0, width: 2.toPixel(), height: frame.size.height)
+            
+            switch position {
+            case .right:
+                line.center = CGPoint(x: frame.size.width-1.toPixel(), y: line.center.y)
+                break
+            case .center:
+                line.center = CGPoint(x: frame.midX-1.toPixel(), y: line.center.y)
+                break
+            default:
+                break
+            }
+            
+            return
         }
     }
 }

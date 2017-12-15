@@ -61,6 +61,7 @@ class TNMenuViewModel: NSObject {
                 menuViewController.navigationController?.pushViewController(TNProfileViewController(), animated: true)
                 break
             case .some(.timeline):
+                menuViewController.navigationController?.pushViewController(TNTimeLineViewController(), animated: true)
                 break
             case .some(.settings):
                 push(viewController: TNSettingsViewController())

@@ -20,6 +20,7 @@ enum NavigationItemType {
     case calendar
     case list
     case logout
+    case filter
     
     enum menuEvent {
         case pop
@@ -86,6 +87,7 @@ class TNBaseViewController: UIViewController {
         case .calendar: return
         case .list: return
         case .logout: return
+        case .filter: return
         case .close:
             leftImageName = "Icon-Close"
             
@@ -112,6 +114,7 @@ class TNBaseViewController: UIViewController {
             }).disposed(by: disposeBag)
             
             break
+       
             
         }
         
@@ -169,6 +172,10 @@ class TNBaseViewController: UIViewController {
                 })
                 
             }).disposed(by: disposeBag)
+            
+            break
+        case .filter:
+            rightImageName = "Icon-Filter"
             
             break
         }

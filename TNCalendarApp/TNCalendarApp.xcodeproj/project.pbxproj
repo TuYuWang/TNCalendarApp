@@ -39,6 +39,9 @@
 		E974DD2E1FD69DF300E3EBEE /* TNAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E974DD2D1FD69DF300E3EBEE /* TNAddViewController.swift */; };
 		E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97572821FA06E6900E8640E /* TNMenuViewController.swift */; };
 		E985065D1FB14CF1004A5F6E /* TNBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E985065C1FB14CF1004A5F6E /* TNBottomButton.swift */; };
+		E98593331FE3662E002ED42D /* TNTimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98593321FE3662E002ED42D /* TNTimeLineViewController.swift */; };
+		E98593351FE36D9A002ED42D /* TNTimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98593341FE36D9A002ED42D /* TNTimeLineCell.swift */; };
+		E98593391FE39655002ED42D /* TNTimeLineHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98593381FE39655002ED42D /* TNTimeLineHeadView.swift */; };
 		E987160F1F99C9EC00AA357B /* TNLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987160A1F99C9EC00AA357B /* TNLoginViewController.swift */; };
 		E98716101F99C9EC00AA357B /* TNLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987160C1F99C9EC00AA357B /* TNLoginTableViewCell.swift */; };
 		E98716111F99C9EC00AA357B /* TNLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987160E1F99C9EC00AA357B /* TNLoginViewModel.swift */; };
@@ -112,6 +115,9 @@
 		E974DD2D1FD69DF300E3EBEE /* TNAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNAddViewController.swift; sourceTree = "<group>"; };
 		E97572821FA06E6900E8640E /* TNMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNMenuViewController.swift; sourceTree = "<group>"; };
 		E985065C1FB14CF1004A5F6E /* TNBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNBottomButton.swift; sourceTree = "<group>"; };
+		E98593321FE3662E002ED42D /* TNTimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNTimeLineViewController.swift; sourceTree = "<group>"; };
+		E98593341FE36D9A002ED42D /* TNTimeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNTimeLineCell.swift; sourceTree = "<group>"; };
+		E98593381FE39655002ED42D /* TNTimeLineHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNTimeLineHeadView.swift; sourceTree = "<group>"; };
 		E987160A1F99C9EC00AA357B /* TNLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNLoginViewController.swift; sourceTree = "<group>"; };
 		E987160C1F99C9EC00AA357B /* TNLoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNLoginTableViewCell.swift; sourceTree = "<group>"; };
 		E987160E1F99C9EC00AA357B /* TNLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNLoginViewModel.swift; sourceTree = "<group>"; };
@@ -244,6 +250,7 @@
 				E967B8651FDA989A00117C18 /* TNGroup */,
 				E96D83031FE113E900EE40DB /* TNList */,
 				E9357B611FE122E5007314DA /* TNProfile */,
+				E985932F1FE3660B002ED42D /* TNTimeLine */,
 				E93ECC911F9751B8005664DD /* TNUserInfo.swift */,
 				E9A0237E1FD7DFE7001BD977 /* TNListCell.swift */,
 				E914B2F11F9F1343004DA36A /* TNLineView.swift */,
@@ -388,6 +395,32 @@
 				E928CB681FA07E52002F4406 /* ViewModel */,
 			);
 			path = TNMenu;
+			sourceTree = "<group>";
+		};
+		E985932F1FE3660B002ED42D /* TNTimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				E98593321FE3662E002ED42D /* TNTimeLineViewController.swift */,
+				E98593301FE3660B002ED42D /* View */,
+				E98593311FE3660B002ED42D /* ViewModel */,
+			);
+			path = TNTimeLine;
+			sourceTree = "<group>";
+		};
+		E98593301FE3660B002ED42D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E98593341FE36D9A002ED42D /* TNTimeLineCell.swift */,
+				E98593381FE39655002ED42D /* TNTimeLineHeadView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E98593311FE3660B002ED42D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E98716091F99C9EB00AA357B /* TNLogin */ = {
@@ -685,6 +718,7 @@
 				E9A0237F1FD7DFE7001BD977 /* TNListCell.swift in Sources */,
 				E985065D1FB14CF1004A5F6E /* TNBottomButton.swift in Sources */,
 				E911516C1FE2533F00006EC0 /* TNProfileCenterView.swift in Sources */,
+				E98593331FE3662E002ED42D /* TNTimeLineViewController.swift in Sources */,
 				E9740D561FAAC0DA00230762 /* TNSettingsTableViewHeader.swift in Sources */,
 				E97572831FA06E6900E8640E /* TNMenuViewController.swift in Sources */,
 				E98A6D041FBADA82002F9A3E /* CellView.swift in Sources */,
@@ -716,6 +750,7 @@
 				E93ECC8A1F9739DE005664DD /* TNWhiteLabel.swift in Sources */,
 				E93E9CF51F99DD1E00AEB088 /* TNCalendarViewController.swift in Sources */,
 				E914B2F21F9F1343004DA36A /* TNLineView.swift in Sources */,
+				E98593351FE36D9A002ED42D /* TNTimeLineCell.swift in Sources */,
 				E9357B601FE11C8D007314DA /* TNListTableViewCell.swift in Sources */,
 				E94E788A1FB30821001FBF59 /* PCH.swift in Sources */,
 				E98716161F99CA2D00AA357B /* TNRegisterViewController.swift in Sources */,
@@ -723,6 +758,7 @@
 				E99F98BE1FA18D8500D3F88F /* TNSettingsViewController.swift in Sources */,
 				E994411D1F971E2C0005F730 /* TNCofiguration.swift in Sources */,
 				E928CB6B1FA07E76002F4406 /* TNMenuCollectionViewCell.swift in Sources */,
+				E98593391FE39655002ED42D /* TNTimeLineHeadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
