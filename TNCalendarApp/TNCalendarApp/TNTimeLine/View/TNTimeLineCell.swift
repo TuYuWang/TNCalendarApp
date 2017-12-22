@@ -20,6 +20,7 @@ class TNTimeLineCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear
+        selectionStyle = .none
         
         eventlab = TNWhiteLabel()
         eventlab.font = SFont(font: 30)

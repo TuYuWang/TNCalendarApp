@@ -15,8 +15,8 @@ class TNTimeLineHeadView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        backgroundView?.removeFromSuperview()
-        contentView.removeFromSuperview()
+        backgroundView = UIView()
+        backgroundView?.backgroundColor = .clear
         
         timeBtn = TNButton(type: .left)
         timeBtn.setImage(ImageName("Icon-Time"), for: .normal)
@@ -36,6 +36,4 @@ class TNTimeLineHeadView: UITableViewHeaderFooterView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    
 }
